@@ -1,0 +1,17 @@
+<div class="wrapper">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="alert alert-danger"></div>
+
+    <div class="alert alert-danger" *ngIf="message">{{message}}</div>
+
+    <label>
+      login:
+      <input type="text" formControlName="login">
+    </label>
+    <label>
+      pass:
+      <input type="text" formControlName="password" type="password">
+    </label>
+    <button [disabled]="!loginForm.valid">Submit</button>
+  </form>
+</div>
