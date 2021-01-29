@@ -12,6 +12,10 @@
       pass:
       <input type="text" formControlName="password" type="password">
     </label>
-    <button [disabled]="!loginForm.valid">Submit</button>
+    <label>
+      accept terms
+      <input type="checkbox">
+    </label>
+    <button [disabled]="!loginForm.valid">Login</button>
   </form>
 </div>

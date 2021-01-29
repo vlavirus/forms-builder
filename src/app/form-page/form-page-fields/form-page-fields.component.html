@@ -1,0 +1,18 @@
+<div cdkDropListGroup>
+  <div class="example-container">
+    <h2>Available draggable fields</h2>
+    <div
+      cdkDropList
+      id="list-two"
+      [cdkDropListConnectedTo]="['list-one']"
+      [cdkDropListData]="items"
+      class="example-list"
+      cdkDropListSortingDisabled
+      (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of items" cdkDrag (cdkDragReleased)="rebuildArray()">
+        <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+        {{item}}
+      </div>
+    </div>
+  </div>
+</div>

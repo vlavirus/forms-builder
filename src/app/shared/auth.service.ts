@@ -2,10 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { UserModel } from './modules/user.model';
 import { environment } from '../../environments/environment';
-// import * as jwtDecode from 'jwt-decode';
 import * as jwtEncode from 'jwt-encode';
 import { Observable, Subject } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
+import { SetOnLoginAction } from '../core/core.actions';
+import { Store } from '@ngrx/store';
+import * as fromCore from '../core';
+
 
 @Injectable()
 export class AuthService {
@@ -13,19 +16,27 @@ export class AuthService {
 
   public error$: Subject<string> = new Subject<string>();
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private store: Store<fromCore.State>,
+    private http: HttpClient
+  ) {}
 
   get token(): string {
+    this.checkExpireDate();
+
+    return localStorage.getItem('form-token');
+  }
+
+  checkExpireDate(): true | null {
     const expDate = new Date(localStorage.getItem('form-token-exp'));
     if (new Date() > expDate) {
       this.logOut();
       return null;
     }
-
-    return localStorage.getItem('form-token');
+    return true;
   }
 
-  login(user: UserModel): Observable<any> {
+  login(user: UserModel): Observable<any> | any {
     return this.http.get(`${this.apiUrl}users?login=${user.login}&password=${user.password}`)
       .pipe(
         tap(this.setToken),
@@ -46,9 +57,13 @@ export class AuthService {
     this.error$.next('Invalid email or password');
   }
 
+  public setData(user: UserModel): void {
+    this.store.dispatch(new SetOnLoginAction(user));
+  }
+
   private setToken(response: any | null): any {
     if (response) {
-      const expiresIn = 6000;
+      const expiresIn = 10000;
       const expData = new Date(new Date().getTime() + +expiresIn * 1000);
       const token =  jwtEncode(response, 'secret');
       localStorage.setItem('form-token', token);

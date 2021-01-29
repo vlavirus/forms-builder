@@ -35,11 +35,11 @@ export class AuthComponent implements OnInit {
     if (this.loginForm.invalid) {
       return;
     }
-
     this.authService.login(this.loginForm.value).subscribe(
-(res) => {
-        if (res.id) {
+        (res) => {
+        if (res[0]) {
           this.loginSuccess(res);
+          this.authService.setData(res[0]);
         } else  {
           this.loginForm.reset();
           this.message = 'Пользователь с таким логином и паролем не обнаружен.';
@@ -53,5 +53,4 @@ export class AuthComponent implements OnInit {
     this.loginForm.reset();
     this.router.navigate([`/user`]);
   }
-
 }
