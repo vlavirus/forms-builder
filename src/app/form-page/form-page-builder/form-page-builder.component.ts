@@ -8,11 +8,7 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
 })
 export class FormPageBuilderComponent implements OnInit {
 
-  basket = [
-    'Oranges',
-    'Bananas',
-    'Cucumbers'
-  ];
+  form = [];
 
   constructor() { }
 
@@ -20,14 +16,15 @@ export class FormPageBuilderComponent implements OnInit {
   }
 
   drop(event: CdkDragDrop<string[]>): void {
-    // debugger
+    console.log(event);
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
       transferArrayItem(event.previousContainer.data,
         event.container.data,
         event.previousIndex,
-        event.currentIndex);
+        event.currentIndex
+      );
     }
   }
 

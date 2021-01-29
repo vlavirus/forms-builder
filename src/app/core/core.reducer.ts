@@ -1,4 +1,4 @@
-import { UserModel } from '../shared/modules/user.model';
+import { UserModel } from '../shared/models/user.model';
 import * as coreActions from './core.actions';
 
 export interface State {

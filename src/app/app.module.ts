@@ -23,6 +23,10 @@ import { FormPageBuilderComponent } from './form-page/form-page-builder/form-pag
 import { FormPageFieldsComponent } from './form-page/form-page-fields/form-page-fields.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { InputComponent } from './shared/components/input/input.component';
+import { TextareaComponent } from './shared/components/textarea/textarea.component';
+import { ButtonComponent } from './shared/components/button/button.component';
+import { CheckboxComponent } from './shared/components/checkbox/checkbox.component';
+import { SelectComponent } from './shared/components/select/select.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +37,11 @@ import { InputComponent } from './shared/components/input/input.component';
     FormPageStylingComponent,
     FormPageBuilderComponent,
     FormPageFieldsComponent,
-    InputComponent
+    InputComponent,
+    TextareaComponent,
+    ButtonComponent,
+    CheckboxComponent,
+    SelectComponent
   ],
     imports: [
         HttpClientModule,

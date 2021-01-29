@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { UserModel } from './modules/user.model';
+import { UserModel } from './models/user.model';
 import { environment } from '../../environments/environment';
 import * as jwtEncode from 'jwt-encode';
 import { Observable, Subject } from 'rxjs';
