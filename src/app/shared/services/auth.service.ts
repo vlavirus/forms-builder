@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { UserModel } from './models/user.model';
-import { environment } from '../../environments/environment';
 import * as jwtEncode from 'jwt-encode';
 import { Observable, Subject } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-import { SetOnLoginAction } from '../core/core.actions';
 import { Store } from '@ngrx/store';
-import * as fromCore from '../core';
 
+import * as fromCore from '../../core';
+import { SetOnLoginAction } from '../../core/core.actions';
+import { environment } from '../../../environments/environment';
+import { UserModel } from '../models/user.model';
 
 @Injectable()
 export class AuthService {

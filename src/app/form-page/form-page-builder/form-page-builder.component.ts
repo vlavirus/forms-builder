@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { AddFieldAction, GetStaticFieldsActions } from '../../core/fields/fields.action';
+import { Store } from '@ngrx/store';
+import * as fromFields from '../../core';
 
 @Component({
   selector: 'app-form-page-builder',
@@ -10,22 +13,27 @@ export class FormPageBuilderComponent implements OnInit {
 
   form = [];
 
-  constructor() { }
+  constructor(
+    private storeFields: Store<fromFields.State>
+  ) { }
 
   ngOnInit(): void {
   }
 
   drop(event: CdkDragDrop<string[]>): void {
-    console.log(event);
+    debugger
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
-      transferArrayItem(event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex
-      );
+      // transferArrayItem(event.previousContainer.data,
+      //   event.container.data,
+      //   event.previousIndex,
+      //   event.currentIndex
+      // );
+      this.storeFields.dispatch(new AddFieldAction(event.previousContainer.data[event.previousIndex]));
     }
   }
 
 }
+
+// this.storeFields.dispatch(new AddFieldAction(event.previousContainer.data[event.previousIndex]));

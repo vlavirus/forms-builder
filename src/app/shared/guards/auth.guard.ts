@@ -5,7 +5,7 @@ import jwt_decode from 'jwt-decode';
 import { Store } from '@ngrx/store';
 
 import * as fromCore from 'app/core/';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../services/auth.service';
 import { SetOnLoginAction } from '../../core/core.actions';
 
 

@@ -7,7 +7,7 @@ export const metaReducers: MetaReducer<any, any>[] = !environment.production ? [
 
 @NgModule({
   imports: [
-    StoreModule.forFeature('core', reducer, {metaReducers})
+    StoreModule.forFeature('core', reducer)
   ],
   exports: []
 })

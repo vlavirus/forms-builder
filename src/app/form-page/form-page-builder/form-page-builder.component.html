@@ -7,7 +7,8 @@
       [cdkDropListConnectedTo]="['list-two']"
       [cdkDropListData]="form"
       class="example-list"
-      (cdkDropListDropped)="drop($event)">
+      (cdkDropListDropped)="drop($event)"
+    >
       <div class="example-box" *ngFor="let item of form" cdkDrag>
         <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
         <container-element [ngSwitch]="item.type">

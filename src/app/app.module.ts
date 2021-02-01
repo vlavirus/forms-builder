@@ -11,7 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthComponent } from './auth/auth.component';
-import { AuthService } from './shared/auth.service';
+import { AuthService } from './shared/services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { UserComponent } from './user/user.component';
 import { AuthGuard } from './shared/guards/auth.guard';
@@ -27,6 +27,7 @@ import { TextareaComponent } from './shared/components/textarea/textarea.compone
 import { ButtonComponent } from './shared/components/button/button.component';
 import { CheckboxComponent } from './shared/components/checkbox/checkbox.component';
 import { SelectComponent } from './shared/components/select/select.component';
+import { FieldsModule } from './core/fields/fields.module';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { SelectComponent } from './shared/components/select/select.component';
     TextareaComponent,
     ButtonComponent,
     CheckboxComponent,
-    SelectComponent
+    SelectComponent,
+
   ],
     imports: [
         HttpClientModule,
@@ -55,7 +57,8 @@ import { SelectComponent } from './shared/components/select/select.component';
         ReactiveFormsModule,
         BrowserAnimationsModule,
         DragDropModule,
-        FormsModule
+        FormsModule,
+        FieldsModule
     ],
   exports: [
     HttpClientModule
