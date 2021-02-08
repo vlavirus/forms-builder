@@ -1,8 +1,9 @@
 <div class="wrapper">
-  <label>label</label>
+  <label>{{label}}</label>
   <input
     [(ngModel)]="value"
-    placeholder="input"
+    [ngStyle]="styleExp"
+    [placeholder]="placeholder"
   >
 </div>
 

@@ -1,9 +1,7 @@
 import { NgModule } from '@angular/core';
-import { MetaReducer, StoreModule } from '@ngrx/store';
-import { environment } from '../../environments/environment';
-import { reducer } from './core.reducer';
+import { StoreModule } from '@ngrx/store';
 
-export const metaReducers: MetaReducer<any, any>[] = !environment.production ? [] : [];
+import { reducer } from './core.reducer';
 
 @NgModule({
   imports: [

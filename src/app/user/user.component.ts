@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { GetStaticFieldsActions } from 'app/core/fields/fields.action';
+import * as fromFields from '../core';
 
 @Component({
   selector: 'app-user',
@@ -7,9 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private storeFields: Store<fromFields.State>
+  ) { }
 
   ngOnInit(): void {
+    this.storeFields.dispatch(new GetStaticFieldsActions());
   }
 
 }

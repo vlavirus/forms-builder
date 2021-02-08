@@ -1,41 +1,65 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ControlValueAccessor } from '@angular/forms';
+import { Component, forwardRef, Input, OnInit } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'app-input',
   templateUrl: './input.component.html',
-  styleUrls: ['./input.component.scss']
+  styleUrls: ['./input.component.scss'],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => InputComponent),
+      multi: true
+    }
+  ]
 })
-export class InputComponent implements OnInit, ControlValueAccessor {
 
-  constructor() { }
+export class InputComponent implements OnInit, ControlValueAccessor {
+  @Input() styleArray: any;
+  placeholder = '';
+  styleExp = {};
+  label = '';
+  requiredState = false;
 
   @Input()
   set value(value: any) {
     this._value = value;
-    this.writeValue(this._value);
+    this.writeValue(value);
   }
 
   get value(): any {
     return this._value;
   }
 
-  _value: string;
+  constructor() {
+  }
+
+  _value: any = '';
+
+  onChange = (value) => {};
+
+  onTouched = () => {};
 
   ngOnInit(): void {
+    if (this.styleArray) {
+      this.styleArray.forEach(item => {
+        (item.name === 'placeholder') ? this.placeholder = item.value :
+          (item.name === 'required') ? this.requiredState = item.value :
+            (item.name === 'label') ? this.label = item.value : this.styleExp[item.name] = `${item.value}${item.measurement}`;
+      });
+    }
   }
 
-  registerOnChange(fn: any): void {
+  writeValue(value): void {
+    this.onChange(value);
   }
 
-  registerOnTouched(fn: any): void {
+  registerOnChange(fn: (value: number) => void): void {
+    this.onChange = fn;
   }
 
-  writeValue(value: string): void {
-    this._value = value;
-    this.onChange(this._value);
+  registerOnTouched(fn: () => void): void {
+    this.onTouched = fn;
   }
-
-  onChange(value: string): void {}
 
 }

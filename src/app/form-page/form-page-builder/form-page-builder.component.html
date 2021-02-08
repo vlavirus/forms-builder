@@ -1,22 +1,22 @@
 <div cdkDropListGroup>
-  <div class="example-container">
+  <div class="example-container" [formGroup]="form">
     <h2>Form Builder</h2>
     <div
       cdkDropList
       id="list-one"
       [cdkDropListConnectedTo]="['list-two']"
-      [cdkDropListData]="form"
+      [cdkDropListData]="formData"
       class="example-list"
       (cdkDropListDropped)="drop($event)"
     >
-      <div class="example-box" *ngFor="let item of form" cdkDrag>
+      <div class="example-box" *ngFor="let formItem of formData" cdkDrag >
         <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
-        <container-element [ngSwitch]="item.type">
-          <app-input *ngSwitchCase="'input'"></app-input>
-          <app-textarea *ngSwitchCase="'textarea'"></app-textarea>
-          <app-button *ngSwitchCase="'button'"></app-button>
-          <app-select *ngSwitchCase="'select'"></app-select>
-          <app-checkbox *ngSwitchCase="'checkbox'"></app-checkbox>
+        <container-element [ngSwitch]="formItem.type">
+          <app-input *ngSwitchCase="'input'" [formControlName]="formItem.id" [styleArray]="formItem.style"></app-input>
+          <app-textarea *ngSwitchCase="'textarea'" [formControlName]="formItem.id" [styleArray]="formItem.style"></app-textarea>
+          <app-button *ngSwitchCase="'button'" [styleArray]="formItem.style" (click)="onShowClick()"></app-button>
+          <app-select *ngSwitchCase="'select'" [formControlName]="formItem.id" [styleArray]="formItem.style"></app-select>
+          <app-checkbox *ngSwitchCase="'checkbox'" [formControlName]="formItem.id" [styleArray]="formItem.style"></app-checkbox>
         </container-element>
       </div>
     </div>

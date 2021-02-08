@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { UserModel } from '../shared/models/user.model';
+import { UserModel } from 'app/shared/models/user.model';
 
 export const ON_LOGIN = '[Core] On login';
 

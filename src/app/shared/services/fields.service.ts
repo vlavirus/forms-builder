@@ -1,12 +1,11 @@
-import { Injectable } from '@angular/core';
-import { environment } from '../../../environments/environment';
-
-import * as fromFields from '../../core/index';
+import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { HttpClient } from '@angular/common/http';
-import { FormElementModel } from '../models/form-element.model';
-import { Observable } from 'rxjs';
-import { first, tap } from 'rxjs/operators';
+import { Injectable } from '@angular/core';
+
+import { environment } from '../../../environments/environment';
+import * as fromFields from '../../core/index';
+import { first } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -14,13 +13,14 @@ import { first, tap } from 'rxjs/operators';
 export class FieldsService {
   apiUrl = environment.apiUrl;
 
-
   constructor(
     private fieldsStore: Store<fromFields.State>,
     private http: HttpClient
   ) {}
 
   getStaticData(): Observable<any> | any{
-    return this.http.get(`${this.apiUrl}draggable-fields`);
+    return this.http.get(`${this.apiUrl}draggable-fields`).pipe(
+      first()
+    ).toPromise();
   }
 }

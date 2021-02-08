@@ -13,4 +13,5 @@ import { reducer } from './fields.reducer';
   ],
   exports: []
 })
+
 export class FieldsModule { }

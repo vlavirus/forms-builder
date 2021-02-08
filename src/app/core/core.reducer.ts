@@ -1,5 +1,5 @@
-import { UserModel } from '../shared/models/user.model';
 import * as coreActions from './core.actions';
+import { UserModel } from 'app/shared/models/user.model';
 
 export interface State {
   isAuthenticated: boolean;

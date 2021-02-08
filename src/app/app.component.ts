@@ -16,6 +16,6 @@ export class AppComponent implements OnInit{
   ) {}
 
   ngOnInit(): void {
-    this.storeFields.dispatch(new GetStaticFieldsActions());
+    // this.storeFields.dispatch(new GetStaticFieldsActions());
   }
 }

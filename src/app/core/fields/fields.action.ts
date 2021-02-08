@@ -1,15 +1,15 @@
 import { Action } from '@ngrx/store';
-import { FormElementModel } from '../../shared/models/form-element.model';
 
 export const ADD_FIELD = '[Fields] on add';
 export const REMOVE_FIELD = '[Fields] on remove';
 export const GET_STATIC_FIELDS = '[Fields] get static fields';
 export const GET_STATIC_FIELDS_SUCCESS = '[Fields] get static fields success';
 
+export const ADD_FIELD_STYLE = '[Fields] on add style';
 
 export class AddFieldAction implements Action {
   readonly type = ADD_FIELD;
-  constructor(public payload: any) {}
+  constructor(public payload: { index, item }) {}
 }
 
 export class RemoveFieldAction implements Action {
@@ -26,4 +26,14 @@ export class GetStaticFieldsSuccess implements Action {
   constructor(public payload: any) {}
 }
 
-export type Actions = | AddFieldAction | RemoveFieldAction | GetStaticFieldsActions | GetStaticFieldsSuccess;
+export class AddStyleToField implements Action {
+  readonly type = ADD_FIELD_STYLE;
+  constructor(public payload: {id, styles}) {}
+}
+
+export type Actions =
+  | AddFieldAction
+  | RemoveFieldAction
+  | GetStaticFieldsActions
+  | GetStaticFieldsSuccess
+  | AddStyleToField;

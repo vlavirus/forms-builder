@@ -1,19 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from '../shared/services/auth.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+
+import { AuthService } from 'app/shared/services/auth.service';
 
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.scss']
 })
+
 export class AuthComponent implements OnInit {
 
   message: string;
+  hide = true;
 
   loginForm = new FormGroup({
-    login: new FormControl('', [Validators.required]),
+    login: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required, Validators.minLength(2)])
   });
 
@@ -25,7 +28,7 @@ export class AuthComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((params: Params) => {
-      if (params['loginAgain']) {
+      if (params.loginAgain) {
         this.message = 'Пожалуйста введите данные';
       }
     });
@@ -35,10 +38,11 @@ export class AuthComponent implements OnInit {
     if (this.loginForm.invalid) {
       return;
     }
+
     this.authService.login(this.loginForm.value).subscribe(
         (res) => {
         if (res[0]) {
-          this.loginSuccess(res);
+          this.loginSuccess();
           this.authService.setData(res[0]);
         } else  {
           this.loginForm.reset();
@@ -49,7 +53,7 @@ export class AuthComponent implements OnInit {
     );
   }
 
-  private loginSuccess(data: any): void {
+  private loginSuccess(): void {
     this.loginForm.reset();
     this.router.navigate([`/user`]);
   }

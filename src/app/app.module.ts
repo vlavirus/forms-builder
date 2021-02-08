@@ -28,6 +28,14 @@ import { ButtonComponent } from './shared/components/button/button.component';
 import { CheckboxComponent } from './shared/components/checkbox/checkbox.component';
 import { SelectComponent } from './shared/components/select/select.component';
 import { FieldsModule } from './core/fields/fields.module';
+import { ReactiveComponentModule } from '@ngrx/component';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { FormPageStylingItemComponent } from './form-page/form-page-styling/form-page-styling-item/form-page-styling-item.component';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+
 
 @NgModule({
   declarations: [
@@ -43,27 +51,38 @@ import { FieldsModule } from './core/fields/fields.module';
     ButtonComponent,
     CheckboxComponent,
     SelectComponent,
-
+    FormPageStylingItemComponent,
   ],
-    imports: [
-        HttpClientModule,
-        BrowserModule,
-        CoreModule,
-        AppRoutingModule,
-        StoreModule.forRoot({}, {}),
-        StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production}),
-        EffectsModule.forRoot([]),
-        StoreRouterConnectingModule.forRoot(),
-        ReactiveFormsModule,
-        BrowserAnimationsModule,
-        DragDropModule,
-        FormsModule,
-        FieldsModule
-    ],
+  imports: [
+    HttpClientModule,
+    BrowserModule,
+    CoreModule,
+    AppRoutingModule,
+    StoreModule.forRoot({}, {}),
+    StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production}),
+    EffectsModule.forRoot([]),
+    StoreRouterConnectingModule.forRoot(),
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    DragDropModule,
+    FormsModule,
+    FieldsModule,
+    ReactiveComponentModule,
+    MatExpansionModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatIconModule,
+    MatButtonModule
+  ],
   exports: [
-    HttpClientModule
+    HttpClientModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatIconModule,
+    MatButtonModule
   ],
-  providers: [AuthService, AuthGuard],
+  providers: [
+    { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } } , AuthService, AuthGuard ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
