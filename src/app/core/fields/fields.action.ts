@@ -4,8 +4,8 @@ export const ADD_FIELD = '[Fields] on add';
 export const REMOVE_FIELD = '[Fields] on remove';
 export const GET_STATIC_FIELDS = '[Fields] get static fields';
 export const GET_STATIC_FIELDS_SUCCESS = '[Fields] get static fields success';
-
 export const ADD_FIELD_STYLE = '[Fields] on add style';
+export const ADD_NEW_OPTION = '[Fields] on add new option';
 
 export class AddFieldAction implements Action {
   readonly type = ADD_FIELD;
@@ -31,9 +31,15 @@ export class AddStyleToField implements Action {
   constructor(public payload: {id, styles}) {}
 }
 
+export class AddNewOption implements Action {
+  readonly type = ADD_NEW_OPTION;
+  constructor(public payload: {id, option}) {}
+}
+
 export type Actions =
   | AddFieldAction
   | RemoveFieldAction
   | GetStaticFieldsActions
   | GetStaticFieldsSuccess
-  | AddStyleToField;
+  | AddStyleToField
+  | AddNewOption;

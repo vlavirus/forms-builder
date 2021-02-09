@@ -5,10 +5,10 @@ import { Observable, Subject } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 
-import * as fromCore from '../../core';
-import { SetOnLoginAction } from '../../core/core.actions';
+import * as fromCore from 'app/core';
+import { SetOnLoginAction } from 'app/core/core.actions';
 import { environment } from '../../../environments/environment';
-import { UserModel } from '../models/user.model';
+import { UserModel } from 'app/shared/models/user.model';
 
 @Injectable()
 export class AuthService {

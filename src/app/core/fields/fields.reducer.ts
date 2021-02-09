@@ -35,6 +35,16 @@ export function reducer(state: State = INIT_STATE, action: fieldsAction.Actions)
           {id: currentItem.id, style: newStyle, type: currentItem.type },
           ...state.currentFields.slice(currentItemIndex + 1)]
       };
+    case fieldsAction.ADD_NEW_OPTION:
+      const optionItem = JSON.parse(JSON.stringify(state.currentFields.find(item => item.id  === action.payload.id)));
+      const optionItemIndex = state.currentFields.findIndex(item => item.id  === action.payload.id);
+      // @ts-ignore
+      optionItem.style.find(({name}) => name === 'options').value
+        ?.push({ name: action.payload.option.optionControl, value: action.payload.option.optionControl});
+
+      return { ...state, currentFields: [
+          ...state.currentFields.slice(0, optionItemIndex), optionItem, ...state.currentFields.slice(optionItemIndex + 1)]
+      };
     default:
       return state;
   }

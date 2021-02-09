@@ -6,10 +6,11 @@
       id="list-two"
       [cdkDropListConnectedTo]="['list-one']"
       [cdkDropListData]="items"
-      class="example-list"
+      class="example-list d__block"
       cdkDropListSortingDisabled
       (cdkDropListDropped)="drop($event)">
-      <div class="example-box" *ngFor="let item of items"  (cdkDragReleased)="rebuildStaticFields()" cdkDrag>
+
+      <div class="example-box d__flex d__flex--justify-between d__flex--direction-row d__flex--items-center" *ngFor="let item of items"  (cdkDragReleased)="rebuildStaticFields()" cdkDrag>
         <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
         <container-element [ngSwitch]="item.type">
           <app-input *ngSwitchCase="'input'" [styleArray]="item.style"></app-input>

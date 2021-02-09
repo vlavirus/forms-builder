@@ -46,10 +46,6 @@ export class FormPageBuilderComponent implements OnInit, OnDestroy {
     }
   }
 
-  private generateId(): string {
-    return '_' + Math.random().toString(36).substr(2, 9);
-  }
-
   ngOnDestroy(): void {
     this.ngUnsubscribe$.next(null);
     this.ngUnsubscribe$.complete();

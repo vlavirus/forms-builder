@@ -3,7 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Component, Input, OnInit  } from '@angular/core';
 
 import * as fromFields from 'app/core';
-import { AddStyleToField } from 'app/core/fields/fields.action';
+import { AddNewOption, AddStyleToField } from 'app/core/fields/fields.action';
 import { StyleItemModel } from 'app/shared/models/style-item.model';
 
 @Component({
@@ -48,7 +48,8 @@ export class FormPageStylingItemComponent implements OnInit {
   }
 
   public addOption(): void {
-    console.log(this.formOption.value);
+    this.storeFields.dispatch(new AddNewOption({id: this.currentItem.id, option: this.formOption.value}));
+    this.formOption.reset();
   }
 
 }

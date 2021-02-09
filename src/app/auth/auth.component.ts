@@ -46,7 +46,7 @@ export class AuthComponent implements OnInit {
           this.authService.setData(res[0]);
         } else  {
           this.loginForm.reset();
-          this.message = 'Пользователь с таким логином и паролем не обнаружен.';
+          this.message = 'Wrong login or pass';
         }
       },
       (({ error }) => console.log(error))

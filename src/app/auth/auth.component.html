@@ -1,5 +1,6 @@
 <div class="wrapper">
   <div [formGroup]="loginForm">
+    <mat-card-subtitle *ngIf="message">{{message}}</mat-card-subtitle>
     <div class="example-container">
       <mat-form-field appearance="fill">
         <mat-label>Enter your login</mat-label>

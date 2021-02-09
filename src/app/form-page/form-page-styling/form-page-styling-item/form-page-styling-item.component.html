@@ -72,15 +72,15 @@
             </select>
           </div>
           <label>Add option</label>
-          <div>
-            <input type="text" >
+          <div [formGroup]="formOption" >
+            <input type="text" formControlName="optionControl">
             <button mat-flat-button color="primary" class="add-option" (click)="addOption()">add</button>
           </div>
         </div>
 
         <div *ngSwitchDefault class="item-style">
           <label>{{field.name}}</label>
-          <div [formGroup]="formOption">
+          <div>
             <input type="text" formControlName="{{field.name}}"  placeholder="option">
             <span>{{field.measurement}}</span>
           </div>
