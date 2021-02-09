@@ -13,7 +13,6 @@ import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthService } from './shared/services/auth.service';
-import { UserComponent } from './user/user.component';
 import { AuthGuard } from './shared/guards/auth.guard';
 import { CoreModule } from './core/core.module';
 import { FieldsModule } from './core/fields/fields.module';
