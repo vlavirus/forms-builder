@@ -1,0 +1,132 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "login": "test@gmail.com",
+      "password": "123"
+    },
+    {
+      "id": 2,
+      "login": "test2@gmail.com",
+      "password": "123"
+    },
+    {
+      "id": 3,
+      "login": "test3@gmail.com",
+      "password": "123"
+    },
+    {
+      "login": "test4@gmail.com",
+      "password": "123",
+      "id": 4
+    }
+  ],
+  "draggable-fields": [
+    { "id": "", "type": "input", "style": [
+      {
+        "name": "placeholder", "value": "input", "measurement": ""
+      },
+      {
+        "name": "label", "value": "label", "measurement": ""
+      },
+      {
+        "name": "width", "value": "300", "measurement": "px"
+      },
+      {
+        "name": "height", "value": "40", "measurement": "px"
+      },
+      {
+        "name": "required", "value": [true, false], "measurement": ""
+      },
+      {
+        "name": "border-style", "value":[ "none" , "hidden" , "dotted" , "dashed" , "solid" , "double" , "groove" , "ridge" , "inset" , "outset" ], "measurement": ""
+      },
+      {
+        "name": "font-size", "value": "16", "measurement": "px"
+      },
+      {
+        "name": "color", "value": "#1D9F90", "measurement": ""
+      }
+    ] } ,
+    { "id": "", "type": "textarea", "style": [
+      {
+        "name": "placeholder", "value": "Textarea", "measurement": ""
+      },
+      {
+        "name": "width", "value": "300", "measurement": "px"
+      },
+      {
+        "name": "height", "value": "100", "measurement": "px"
+      },
+      {
+        "name": "required", "value": [true, false], "measurement": ""
+      },
+      {
+        "name": "border-style", "value": [ "none" , "hidden" , "dotted" , "dashed" , "solid" , "double" , "groove" , "ridge" , "inset" , "outset" ], "measurement": ""
+      },
+      {
+        "name": "font-size", "value": "16", "measurement": "px"
+      },
+      {
+        "name": "color", "value": "#1D9F90", "measurement": ""
+      }
+    ] },
+    { "id": "", "type": "button", "style": [
+      {
+        "name": "name", "value": "button", "measurement": ""
+      },
+      {
+        "name": "width", "value": "100", "measurement": "px"
+      },
+      {
+        "name": "height", "value": "50", "measurement": "px"
+      },
+      {
+        "name": "required", "value": [true, false], "measurement": ""
+      },
+      {
+        "name": "border-style", "value": [ "none" , "hidden" , "dotted" , "dashed" , "solid" , "double" , "groove" , "ridge" , "inset" , "outset" ], "measurement": ""
+      },
+      {
+        "name": "font-size", "value": "16", "measurement": "px"
+      }
+    ] },
+    { "id": "", "type": "checkbox", "style": [
+      {
+        "name": "name", "value": "checkbox", "measurement": ""
+      },
+      {
+        "name": "width", "value": "", "measurement": "px"
+      },
+      {
+        "name": "height", "value": "", "measurement": "px"
+      },
+      {
+        "name": "required", "value": [true, false], "measurement": ""
+      }
+    ] },
+    { "id": "", "type": "select", "style":[
+      {
+        "name": "width", "value": "120", "measurement": "px"
+      },
+      {
+        "name": "height", "value": "50", "measurement": "px"
+      },
+      {
+        "name": "required", "value": [true, false], "measurement": ""
+      },
+      {
+        "name": "border-style", "value": [ "none" , "hidden" , "dotted" , "dashed" , "solid" , "double" , "groove" , "ridge" , "inset" , "outset" ], "measurement": ""
+      },
+      {
+        "name": "font-size", "value": "16", "measurement": "px"
+      },
+      {
+        "name": "font-weight", "value": ["bold", "bolder", "lighter", "normal", "100", "200", "300", "400", "500", "600", "700", "800", "900"], "measurement": ""
+      },
+      {
+        "name": "options", "value": [], "measurement": ""
+      }
+    ] }
+  ]
+}
