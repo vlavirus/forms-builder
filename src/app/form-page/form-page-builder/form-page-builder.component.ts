@@ -8,7 +8,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import * as fromFields from 'app/core';
 import { getCurrentFields } from 'app/core';
 import { AddFieldAction } from 'app/core/fields/fields.action';
-import { FormElementModel } from '../../shared/models/form-element.model';
+import { FormElementModel } from 'app/shared/models/form-element.model';
 
 @Component({
   selector: 'app-form-page-builder',
@@ -67,6 +67,7 @@ export class FormPageBuilderComponent implements OnInit, OnDestroy {
 
   onShowClick(): void {
     this.form.valid ? this.show = false : this.show = true;
+    console.log(this.form.value);
   }
 }
 

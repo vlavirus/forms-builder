@@ -29,7 +29,7 @@ export class AuthComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParams.subscribe((params: Params) => {
       if (params.loginAgain) {
-        this.message = 'Пожалуйста введите данные';
+        this.message = 'Please fill your login and pass';
       }
     });
   }
