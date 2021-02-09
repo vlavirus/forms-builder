@@ -17,7 +17,7 @@ export class FormPageStylingItemComponent implements OnInit {
   @Input() currentItem;
   @Input() defaultItem;
 
-  public panelOpenState = false;
+  public panelOpenState = true;
   public form = new FormGroup({});
 
   public formOption = new FormGroup({
@@ -49,7 +49,8 @@ export class FormPageStylingItemComponent implements OnInit {
 
   public addOption(): void {
     this.storeFields.dispatch(new AddNewOption({id: this.currentItem.id, option: this.formOption.value}));
-    this.formOption.reset();
+    this.panelOpenState = true;
+    // this.formOption.reset();
   }
 
 }

@@ -82,9 +82,6 @@
         "name": "height", "value": "50", "measurement": "px"
       },
       {
-        "name": "required", "value": [true, false], "measurement": ""
-      },
-      {
         "name": "border-style", "value": [ "none" , "hidden" , "dotted" , "dashed" , "solid" , "double" , "groove" , "ridge" , "inset" , "outset" ], "measurement": ""
       },
       {
