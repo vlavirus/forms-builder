@@ -7,7 +7,7 @@ import { Store } from '@ngrx/store';
 
 import * as fromCore from 'app/core';
 import { SetOnLoginAction } from 'app/core/core.actions';
-import { environment } from '../../../environments/environment';
+import { environment } from 'environments/environment';
 import { UserModel } from 'app/shared/models/user.model';
 
 @Injectable()

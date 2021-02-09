@@ -1,7 +1,9 @@
+@import 'assets/scss/variables';
+
 select {
-  border: 1px solid #0c0c0c;
+  border: 1px solid $border-color-1;
   padding: 10px 15px;
   border-radius: 20px;
-  background-color: #ffffff;
+  background-color: $background-color-1;
   outline: none;
 }

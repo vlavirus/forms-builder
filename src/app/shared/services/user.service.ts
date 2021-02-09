@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../../environments/environment';
-import { of } from 'rxjs';
+
+import { environment } from 'environments/environment';
 
 @Injectable()
 export class UserService {
@@ -9,11 +9,4 @@ export class UserService {
 
   constructor(private http: HttpClient) {}
 
-  public isValidSession() {
-    const token = localStorage.getItem('TOKEN');
-    if (token) {
-      // return this.http.post(`${this.apiUrl}${ApiConstants.accounts.verifyToken}`, { token });
-    }
-    return of(false);
-  }
 }

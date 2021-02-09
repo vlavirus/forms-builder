@@ -1,11 +1,12 @@
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-
-import { environment } from '../../../environments/environment';
-import * as fromFields from '../../core/index';
 import { first } from 'rxjs/operators';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
+import { environment } from 'environments/environment';
+import * as fromFields from 'app/core/index';
+
 
 @Injectable({
   providedIn: 'root'
