@@ -63,15 +63,15 @@ export class FormPageBuilderComponent implements OnInit, OnDestroy {
     });
   }
 
-  private updateControls(arr): void {
-    arr.forEach(item => {
+  private updateControls(fields: FormElementModel[]): void {
+    fields.forEach(item => {
       if (item.type !== 'button') {
         this.form.contains(item.id) ? null : this.form.addControl(item.id, new FormControl('', []));
       }
     });
 
     for (const controlId in this.form.controls) {
-      arr.find(({id}) => id === controlId) ? null :  this.form.removeControl(controlId);
+      fields.find(({id}) => id === controlId) ? null :  this.form.removeControl(controlId);
     }
   }
 
