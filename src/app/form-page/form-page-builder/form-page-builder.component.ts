@@ -33,6 +33,7 @@ export class FormPageBuilderComponent implements OnInit, OnDestroy {
      .subscribe(
         res => {
           this.formData = [...res];
+          this.updateControls(res);
           this.setValidators(res);
         });
   }
@@ -42,9 +43,6 @@ export class FormPageBuilderComponent implements OnInit, OnDestroy {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
       const addedObject = JSON.parse(JSON.stringify(event.previousContainer.data[event.previousIndex]));
-      if (addedObject.type !== 'button') {
-        this.form.addControl(addedObject.id, new FormControl('', []));
-      }
       this.storeFields.dispatch(new AddFieldAction({index: event.currentIndex, item: addedObject}));
     }
   }
@@ -63,6 +61,18 @@ export class FormPageBuilderComponent implements OnInit, OnDestroy {
         (field.style.find(({name}) => name === 'required')?.value === 'false') ?
           this.form.controls[field.id].clearValidators() : null;
     });
+  }
+
+  private updateControls(arr): void {
+    arr.forEach(item => {
+      if (item.type !== 'button') {
+        this.form.contains(item.id) ? null : this.form.addControl(item.id, new FormControl('', []));
+      }
+    });
+
+    for (const controlId in this.form.controls) {
+      arr.find(({id}) => id === controlId) ? null :  this.form.removeControl(controlId);
+    }
   }
 
   onShowClick(): void {
