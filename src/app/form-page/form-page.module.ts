@@ -11,6 +11,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { SharedModule } from '../shared/shared.module';
 import { ReactiveComponentModule } from '@ngrx/component';
+import { MatButtonModule } from '@angular/material/button';
 
 const routes: Routes = [
   { path: '', component: FormPageComponent }
@@ -31,10 +32,12 @@ const routes: Routes = [
     ReactiveFormsModule,
     DragDropModule,
     SharedModule,
+    MatButtonModule,
     ReactiveComponentModule
   ],
   exports: [
-    FormPageComponent
+    FormPageComponent,
+    MatButtonModule
   ]
 })
 
