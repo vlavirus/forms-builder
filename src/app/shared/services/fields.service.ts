@@ -18,11 +18,11 @@ export class FieldsService {
     private http: HttpClient
   ) {}
 
-  getStaticData(): Observable<any> | any{
+  getStaticData(): Observable<any> | any {
     return this.http.get(`${this.apiUrl}draggable-fields`);
   }
 
-  getGeneralStyle(): Observable<any> | any{
+  getGeneralStyle(): Observable<any> | any {
     return this.http.get(`${this.apiUrl}general-style`);
   }
 }
