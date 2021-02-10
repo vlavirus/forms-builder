@@ -20,8 +20,6 @@ export class FieldsService {
   ) {}
 
   getStaticData(): Observable<any> | any{
-    return this.http.get(`${this.apiUrl}draggable-fields`).pipe(
-      first()
-    ).toPromise();
+    return this.http.get(`${this.apiUrl}draggable-fields`);
   }
 }

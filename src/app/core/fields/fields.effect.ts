@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { exhaustMap, first, map, switchMap } from 'rxjs/operators';
+import { exhaustMap, first, map, switchMap, tap } from 'rxjs/operators';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 
 import * as fieldsActions from './fields.action';
@@ -17,11 +17,11 @@ export class FieldsEffect {
   getStaticFields$ = createEffect((): Observable<any> => {
     return  this.actions$.pipe(
       ofType(fieldsActions.GET_STATIC_FIELDS),
-      exhaustMap(() => this.fieldsService.getStaticData()
-        .then(res => {
-          return new fieldsActions.GetStaticFieldsSuccess(res);
-        })
-      )
+      exhaustMap(() => {
+          return this.fieldsService.getStaticData().pipe(
+            first(),
+            map(res => new fieldsActions.GetStaticFieldsSuccess(res)));
+      })
     );
   });
 

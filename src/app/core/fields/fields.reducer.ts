@@ -4,11 +4,13 @@ import { FormElementModel } from 'app/shared/models/form-element.model';
 export interface State {
   currentFields: FormElementModel[];
   staticFields: FormElementModel[];
+  generalStyle: [];
 }
 
 export const INIT_STATE: State = {
   currentFields: [],
-  staticFields: []
+  staticFields: [],
+  generalStyle: []
 };
 
 export function reducer(state: State = INIT_STATE, action: fieldsAction.Actions) {
