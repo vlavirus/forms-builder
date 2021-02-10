@@ -50,7 +50,6 @@ export class FormPageStylingItemComponent implements OnInit {
   public addOption(): void {
     this.storeFields.dispatch(new AddNewOption({id: this.currentItem.id, option: this.formOption.value}));
     this.panelOpenState = true;
-    // this.formOption.reset();
   }
 
 }
