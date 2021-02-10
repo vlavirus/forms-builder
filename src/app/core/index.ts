@@ -24,3 +24,8 @@ export const getCurrentFields = createSelector(
   getFieldsState,
   fromFields.getCurrentFields
 );
+
+export const getGeneralStyle = createSelector(
+  getFieldsState,
+  fromFields.getGeneralStyle
+);

@@ -24,7 +24,6 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
 
   @Input()
   set value(value: any) {
-    // debugger
     this._value = value;
     this.writeValue(value);
   }
@@ -43,10 +42,8 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
   onTouched = () => {};
 
   ngOnInit(): void {
-    // debugger
     if (this.styleArray) {
       this.styleArray.forEach(item => {
-        // debugger
         (item.name === 'options') ? this.dropList = item.value :
         item.name === 'name' ? this.nameButton = item.value : this.styleExp[item.name] = `${item.value}${item.measurement}`;
       });
@@ -54,7 +51,6 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
   }
 
   writeValue(value): void {
-    // debugger
     this.onChange(value);
   }
 

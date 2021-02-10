@@ -1,12 +1,13 @@
 import { Store } from '@ngrx/store';
 import { takeUntil } from 'rxjs/operators';
 import { Observable, Subject } from 'rxjs';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import * as fromFields from 'app/core';
-import { getCurrentFields, getStaticFields } from 'app/core';
+import { getCurrentFields, getGeneralStyle, getStaticFields } from 'app/core';
 import { FormElementModel } from 'app/shared/models/form-element.model';
+import { AddGeneralStyle } from 'app/core/fields/fields.action';
 
 @Component({
   selector: 'app-form-page-styling',
@@ -20,8 +21,10 @@ export class FormPageStylingComponent implements OnInit, OnDestroy {
   public ngUnsubscribe$ = new Subject<void>();
 
   public form = new FormGroup({});
-  public panelOpenState = false;
   public defaultFields: FormElementModel[];
+  public panelOpenStyleList = false;
+  public panelOpenGeneralStyle = false;
+  public generalStyle$: Observable<any>;
 
   constructor(
     private storeFields: Store<fromFields.State>
@@ -36,6 +39,17 @@ export class FormPageStylingComponent implements OnInit, OnDestroy {
         }
       }
     );
+
+    this.generalStyle$ = this.storeFields.select(getGeneralStyle).pipe(takeUntil(this.ngUnsubscribe$));
+    this.generalStyle$.subscribe(
+      res => {
+        if (res) {
+          res.forEach((style) => {
+            this.form.addControl(style.name, new FormControl(style.value, []));
+          });
+        }
+      }
+    );
   }
 
   public findDefaultFormElement(currentFormElement: FormElementModel): FormElementModel {
@@ -45,5 +59,9 @@ export class FormPageStylingComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.ngUnsubscribe$.next(null);
     this.ngUnsubscribe$.complete();
+  }
+
+  onSubmit(): void {
+    this.storeFields.dispatch(new AddGeneralStyle({style: this.form.value}));
   }
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { GetStaticFieldsActions } from 'app/core/fields/fields.action';
+import { GetGeneralStyleActions, GetStaticFieldsActions } from 'app/core/fields/fields.action';
 import * as fromFields from '../core';
 
 @Component({
@@ -16,6 +16,7 @@ export class UserComponent implements OnInit {
 
   ngOnInit(): void {
     this.storeFields.dispatch(new GetStaticFieldsActions());
+    this.storeFields.dispatch(new GetGeneralStyleActions());
   }
 
 }

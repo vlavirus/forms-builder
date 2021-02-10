@@ -31,7 +31,6 @@ export function reducer(state: State = INIT_STATE, action: fieldsAction.Actions)
       const newStyle = currentItem.style.map(({name, measurement}) => {
           return { name, value: action.payload.styles[name], measurement };
       });
-
       return { ...state, currentFields: [
           ...state.currentFields.slice(0, currentItemIndex),
           {id: currentItem.id, style: newStyle, type: currentItem.type },
@@ -47,6 +46,13 @@ export function reducer(state: State = INIT_STATE, action: fieldsAction.Actions)
       return { ...state, currentFields: [
           ...state.currentFields.slice(0, optionItemIndex), optionItem, ...state.currentFields.slice(optionItemIndex + 1)]
       };
+    case fieldsAction.GET_GENERAL_STYLE_SUCCESS:
+      return { ... state, generalStyle: action.payload };
+    case fieldsAction.ADD_GENERAL_STYLE:
+      const newGeneralStyle = state.generalStyle.map(({name, measurement}) => {
+        return { name, value: action.payload.style[name], measurement };
+      });
+      return { ...state, generalStyle: newGeneralStyle };
     default:
       return state;
   }
@@ -54,3 +60,4 @@ export function reducer(state: State = INIT_STATE, action: fieldsAction.Actions)
 
 export const getStaticFields = (state: State): FormElementModel[] => state.staticFields;
 export const getCurrentFields = (state: State): FormElementModel[] => state.currentFields;
+export const getGeneralStyle = (state: State): [] => state.generalStyle;

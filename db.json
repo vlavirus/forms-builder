@@ -125,5 +125,34 @@
         "name": "options", "value": [], "measurement": ""
       }
     ] }
+  ],
+  "general-style": [
+    {
+      "name": "margin-top", "value": "0", "measurement": "px"
+    },
+    {
+      "name": "margin-bottom", "value": "0", "measurement": "px"
+    },
+    {
+      "name": "margin-right", "value": "0", "measurement": "px"
+    },
+    {
+      "name": "margin-left", "value": "0", "measurement": "px"
+    },
+    {
+      "name": "padding-top", "value": "0", "measurement": "px"
+    },
+    {
+      "name": "padding-bottom", "value": "0", "measurement": "px"
+    },
+    {
+      "name": "padding-right", "value": "0", "measurement": "px"
+    },
+    {
+      "name": "padding-left", "value": "0", "measurement": "px"
+    },
+    {
+      "name": "font-size", "value": "16", "measurement": "px"
+    }
   ]
 }

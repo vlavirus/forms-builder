@@ -36,8 +36,7 @@ export class FormPageStylingItemComponent implements OnInit {
   }
 
   onSubmit(): void {
-    const formValue = this.form.value;
-    this.storeFields.dispatch(new AddStyleToField({id: this.currentItem.id, styles: formValue}));
+    this.storeFields.dispatch(new AddStyleToField({id: this.currentItem.id, styles: this.form.value}));
     this.form.reset();
   }
 

@@ -1,6 +1,5 @@
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { first } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
@@ -21,5 +20,9 @@ export class FieldsService {
 
   getStaticData(): Observable<any> | any{
     return this.http.get(`${this.apiUrl}draggable-fields`);
+  }
+
+  getGeneralStyle(): Observable<any> | any{
+    return this.http.get(`${this.apiUrl}general-style`);
   }
 }

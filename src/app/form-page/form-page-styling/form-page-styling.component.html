@@ -1,8 +1,28 @@
 <div>
-  <h2>General Style</h2>
+  <h2>Styles</h2>
   <mat-accordion>
-    <mat-expansion-panel (opened)="panelOpenState = true"
-                         (closed)="panelOpenState = false">
+    <mat-expansion-panel (opened)="panelOpenGeneralStyle = true"
+                         (closed)="panelOpenGeneralStyle = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <h3>General style</h3>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+        <div *ngFor="let style of generalStyle$ | ngrxPush" [formGroup]="form">
+          <div class="item-style">
+            <label>{{style.name}}</label>
+            <div>
+              <input type="text" formControlName="{{style.name}}"  [placeholder]="style.name">
+              <span>{{style.measurement}}</span>
+            </div>
+          </div>
+        </div>
+      <button mat-flat-button color="primary" (click)="onSubmit()">Submit</button>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <mat-accordion>
+    <mat-expansion-panel (opened)="panelOpenStyleList = true"
+                         (closed)="panelOpenStyleList = false">
       <mat-expansion-panel-header>
         <mat-panel-title>
           <h3>Style list</h3>

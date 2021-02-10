@@ -6,7 +6,7 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import * as fromFields from 'app/core';
-import { getCurrentFields } from 'app/core';
+import { getCurrentFields, getGeneralStyle } from 'app/core';
 import { AddFieldAction } from 'app/core/fields/fields.action';
 import { FormElementModel } from 'app/shared/models/form-element.model';
 
@@ -22,6 +22,7 @@ export class FormPageBuilderComponent implements OnInit, OnDestroy {
   public formData = [];
   public form = new FormGroup({});
   public show = false;
+  public styleExp = {};
 
   constructor(
     private storeFields: Store<fromFields.State>
@@ -29,13 +30,23 @@ export class FormPageBuilderComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.storeFields.select(getCurrentFields)
-     .pipe(takeUntil(this.ngUnsubscribe$))
-     .subscribe(
+       .pipe(takeUntil(this.ngUnsubscribe$))
+       .subscribe(
+          res => {
+            this.formData = [...res];
+            this.updateControls(res);
+            this.setValidators(res);
+          });
+    this.storeFields.select(getGeneralStyle)
+      .pipe(takeUntil(this.ngUnsubscribe$))
+      .subscribe(
         res => {
-          this.formData = [...res];
-          this.updateControls(res);
-          this.setValidators(res);
-        });
+          res.forEach(item => {
+            // @ts-ignore
+            this.styleExp[item.name] = `${item.value}${item.measurement}`;
+          });
+        }
+      );
   }
 
   drop(event: CdkDragDrop<string[]>): void {
