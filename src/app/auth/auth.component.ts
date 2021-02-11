@@ -57,4 +57,5 @@ export class AuthComponent implements OnInit {
     this.loginForm.reset();
     this.router.navigate([`/user`]);
   }
+
 }
