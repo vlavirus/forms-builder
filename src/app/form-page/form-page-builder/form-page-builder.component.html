@@ -1,0 +1,26 @@
+<div cdkDropListGroup>
+  <div class="example-container" [formGroup]="form">
+    <h2>Form Builder</h2>
+    <div
+      cdkDropList
+      id="list-one"
+      [cdkDropListConnectedTo]="['list-two']"
+      [cdkDropListData]="formData"
+      class="example-list d__block"
+      (cdkDropListDropped)="drop($event)"
+
+    >
+      <small *ngIf="show" class="fill-gaps">Fill all gaps</small>
+      <div class="example-box d__flex d__flex--justify-between d__flex--direction-row d__flex--items-center" [ngStyle]="styleExp" *ngFor="let formItem of formData" cdkDrag >
+        <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+        <container-element [ngSwitch]="formItem.type">
+          <app-input *ngSwitchCase="'input'" [formControlName]="formItem.id" [styleArray]="formItem.style"></app-input>
+          <app-textarea *ngSwitchCase="'textarea'" [formControlName]="formItem.id" [styleArray]="formItem.style"></app-textarea>
+          <app-button *ngSwitchCase="'button'" [styleArray]="formItem.style" (click)="onShowClick()"></app-button>
+          <app-select *ngSwitchCase="'select'" [formControlName]="formItem.id" [styleArray]="formItem.style"></app-select>
+          <app-checkbox *ngSwitchCase="'checkbox'" [formControlName]="formItem.id" [styleArray]="formItem.style"></app-checkbox>
+        </container-element>
+      </div>
+    </div>
+  </div>
+</div>

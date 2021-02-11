@@ -1,0 +1,17 @@
+@import 'assets/scss/variables';
+
+input {
+  height: 30px;
+  border: 2px solid $border-color-1;
+  border-radius: 25px;
+  padding: 5px 10px;
+  outline:none;
+}
+
+label {
+  margin-bottom: 5px;
+}
+
+.wrapper {
+  width: fit-content;
+}

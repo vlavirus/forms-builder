@@ -1,0 +1,3 @@
+<select [ngStyle]="styleExp" [(ngModel)]="value">
+  <option *ngFor="let item of dropList" [value]="item.value">{{item.name}}</option>
+</select>
