@@ -1,7 +1,7 @@
 import { Subject } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { takeUntil } from 'rxjs/operators';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -13,7 +13,8 @@ import { FormElementModel } from 'app/shared/models/form-element.model';
 @Component({
   selector: 'app-form-page-builder',
   templateUrl: './form-page-builder.component.html',
-  styleUrls: ['./form-page-builder.component.scss']
+  styleUrls: ['./form-page-builder.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class FormPageBuilderComponent implements OnInit, OnDestroy {

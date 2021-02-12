@@ -1,6 +1,6 @@
 import { Store } from '@ngrx/store';
-import { filter, takeUntil } from 'rxjs/operators';
 import { Observable, Subject } from 'rxjs';
+import { filter, takeUntil } from 'rxjs/operators';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 
@@ -8,6 +8,7 @@ import * as fromFields from 'app/core';
 import { getCurrentFields, getGeneralStyle, getStaticFields } from 'app/core';
 import { FormElementModel } from 'app/shared/models/form-element.model';
 import { AddGeneralStyle } from 'app/core/fields/fields.action';
+import { StyleItemModel } from '../../shared/models/style-item.model';
 
 @Component({
   selector: 'app-form-page-styling',
@@ -24,7 +25,7 @@ export class FormPageStylingComponent implements OnInit, OnDestroy {
   public defaultFields: FormElementModel[];
   public panelOpenStyleList: boolean;
   public panelOpenGeneralStyle: boolean;
-  public generalStyle$: Observable<any>;
+  public generalStyle$: Observable<StyleItemModel[]>;
 
   constructor(
     private storeFields: Store<fromFields.State>

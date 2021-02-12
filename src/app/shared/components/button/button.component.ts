@@ -1,10 +1,12 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { StyleItemModel } from '../../models/style-item.model';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+
+import { StyleItemModel } from 'app/shared/models/style-item.model';
 
 @Component({
   selector: 'app-button',
   templateUrl: './button.component.html',
-  styleUrls: ['./button.component.scss']
+  styleUrls: ['./button.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class ButtonComponent implements OnInit {

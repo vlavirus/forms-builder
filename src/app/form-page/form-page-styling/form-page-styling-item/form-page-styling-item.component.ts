@@ -1,6 +1,6 @@
 import { Store } from '@ngrx/store';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Component, Input, OnInit  } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 
 import * as fromFields from 'app/core';
 import { AddNewOption, AddStyleToField } from 'app/core/fields/fields.action';
@@ -9,7 +9,7 @@ import { StyleItemModel } from 'app/shared/models/style-item.model';
 @Component({
   selector: 'app-form-page-styling-item',
   templateUrl: './form-page-styling-item.component.html',
-  styleUrls: ['./form-page-styling-item.component.scss']
+  styleUrls: ['./form-page-styling-item.component.scss'],
 })
 
 export class FormPageStylingItemComponent implements OnInit {
@@ -41,7 +41,7 @@ export class FormPageStylingItemComponent implements OnInit {
   }
 
   public findStyle(styleName: string, styleContainer: StyleItemModel[]): StyleItemModel {
-    return styleContainer.find((style) => style.name === styleName );
+      return styleContainer.find((style) => style.name === styleName );
   }
 
   public addOption(): void {

@@ -1,24 +1,39 @@
 import { FieldsService } from './fields.service';
-import { HttpClient, HttpHandler } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { first } from 'rxjs/operators';
-import { TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-
+import { getTestBed, TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 describe('FieldService', () => {
-  let fieldsService: FieldsService;
+  let injector: TestBed;
+  let service: FieldsService;
+  let httpMock: HttpTestingController;
+
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [
-        FieldsService,
-      ]
+      providers: [FieldsService]
     });
-    fieldsService = TestBed.get(FieldsService);
+    injector = getTestBed();
+    service = injector.inject(FieldsService);
+    httpMock = injector.inject(HttpTestingController);
   });
 
+  it('test get of General Style', () => {
+    service
+      .getGeneralStyle()
+      .subscribe((response) => expect(response).toBe([]));
 
+    const req = httpMock.expectOne('http://localhost:3000/general-style');
+    expect(req.request.method).toBe('GET');
+  });
+
+  it('test get of Static Data', () => {
+    service
+      .getStaticData()
+      .subscribe((response) => expect(response).toBe([]));
+
+    const req = httpMock.expectOne('http://localhost:3000/draggable-fields');
+    expect(req.request.method).toBe('GET');
+  });
 
 });

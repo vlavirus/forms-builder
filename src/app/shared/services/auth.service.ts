@@ -4,12 +4,12 @@ import * as jwtEncode from 'jwt-encode';
 import { Observable, of, Subject } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
+import jwt_decode from 'jwt-decode';
 
 import * as fromCore from 'app/core';
 import { SetOnLoginAction } from 'app/core/core.actions';
 import { environment } from 'environments/environment';
 import { UserModel } from 'app/shared/models/user.model';
-import jwt_decode from 'jwt-decode';
 
 @Injectable()
 export class AuthService {

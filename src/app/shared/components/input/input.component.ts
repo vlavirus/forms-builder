@@ -1,4 +1,4 @@
-import { Component, forwardRef, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, OnInit } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { StyleItemModel } from 'app/shared/models/style-item.model';
@@ -7,6 +7,7 @@ import { StyleItemModel } from 'app/shared/models/style-item.model';
   selector: 'app-input',
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -19,6 +20,7 @@ import { StyleItemModel } from 'app/shared/models/style-item.model';
 export class InputComponent implements OnInit, ControlValueAccessor {
 
   @Input() styleArray!: StyleItemModel[];
+
   placeholder: string | [];
   styleExp = {};
   label: string | [];
@@ -43,6 +45,7 @@ export class InputComponent implements OnInit, ControlValueAccessor {
   onTouched = () => {};
 
   ngOnInit(): void {
+
     if (this.styleArray) {
       this.styleArray.forEach(({ name, value, measurement }) => {
         switch (name) {

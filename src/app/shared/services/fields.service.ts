@@ -21,4 +21,5 @@ export class FieldsService {
   getGeneralStyle(): Observable<any> {
     return this.http.get(`${this.apiUrl}general-style`);
   }
+
 }

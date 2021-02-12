@@ -1,7 +1,7 @@
 import { Store } from '@ngrx/store';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 import { FormElementModel } from 'app/shared/models/form-element.model';
@@ -11,7 +11,7 @@ import { RemoveFieldAction } from 'app/core/fields/fields.action';
 @Component({
   selector: 'app-form-page-fields',
   templateUrl: './form-page-fields.component.html',
-  styleUrls: ['./form-page-fields.component.scss']
+  styleUrls: ['./form-page-fields.component.scss'],
 })
 
 export class FormPageFieldsComponent implements OnInit, OnDestroy {

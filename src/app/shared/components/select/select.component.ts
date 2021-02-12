@@ -1,11 +1,13 @@
-import { Component, forwardRef, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, OnInit } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { StyleItemModel } from '../../models/style-item.model';
+
+import { StyleItemModel } from 'app/shared/models/style-item.model';
 
 @Component({
   selector: 'app-select',
   templateUrl: './select.component.html',
   styleUrls: ['./select.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -14,7 +16,6 @@ import { StyleItemModel } from '../../models/style-item.model';
     }
   ]
 })
-
 
 export class SelectComponent implements OnInit, ControlValueAccessor {
 
@@ -44,6 +45,7 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
 
   ngOnInit(): void {
     if (this.styleArray) {
+      // debugger
       this.styleArray.forEach(({name, value, measurement}) => {
         (name === 'options') ? this.dropList = value :
           (name === 'name') ? this.nameButton = value : this.styleExp[name] = `${value}${measurement}`;

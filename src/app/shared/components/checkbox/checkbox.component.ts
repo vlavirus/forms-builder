@@ -1,10 +1,11 @@
-import { Component, forwardRef, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, OnInit } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'app-checkbox',
   templateUrl: './checkbox.component.html',
   styleUrls: ['./checkbox.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -13,13 +14,14 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     }
   ]
 })
+
 export class CheckboxComponent implements OnInit, ControlValueAccessor {
 
   @Input() styleArray: any;
   styleExp = {};
   nameCheckbox = '';
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
     if (this.styleArray) {
@@ -41,7 +43,7 @@ export class CheckboxComponent implements OnInit, ControlValueAccessor {
   _value: any;
 
   writeValue(value: number): void {
-    this.onChange(this.value)
+    this.onChange(this.value);
   }
 
   private onChange = (value: number) => {};

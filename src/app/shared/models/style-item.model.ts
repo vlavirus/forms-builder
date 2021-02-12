@@ -1,5 +1,5 @@
 export interface StyleItemModel {
   name: string;
-  value: string|[];
+  value: string | [];
   measurement: string;
 }

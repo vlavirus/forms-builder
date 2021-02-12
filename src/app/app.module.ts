@@ -21,7 +21,6 @@ import { FormPageModule } from './form-page/form-page.module';
 import { SharedModule } from './shared/shared.module';
 import { UserModule } from './user/user.module';
 
-
 @NgModule({
   declarations: [
     AppComponent,

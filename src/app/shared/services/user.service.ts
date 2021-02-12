@@ -8,5 +8,4 @@ export class UserService {
   apiUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) {}
-
 }

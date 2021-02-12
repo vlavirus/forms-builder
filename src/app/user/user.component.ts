@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { GetGeneralStyleActions, GetStaticFieldsActions } from 'app/core/fields/fields.action';
+import { Component, OnInit } from '@angular/core';
+
 import * as fromFields from '../core';
+import { GetGeneralStyleActions, GetStaticFieldsActions } from 'app/core/fields/fields.action';
 
 @Component({
   selector: 'app-user',
