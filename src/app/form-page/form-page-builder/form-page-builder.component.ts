@@ -21,7 +21,7 @@ export class FormPageBuilderComponent implements OnInit, OnDestroy {
   public ngUnsubscribe$ = new Subject<void>();
   public formData = [];
   public form = new FormGroup({});
-  public show = false;
+  public show: boolean;
   public styleExp = {};
 
   constructor(
@@ -87,7 +87,7 @@ export class FormPageBuilderComponent implements OnInit, OnDestroy {
   }
 
   onShowClick(): void {
-    this.form.valid ? this.show = false : this.show = true;
+    this.show = !this.form.valid;
     console.log(this.form.value);
   }
 }

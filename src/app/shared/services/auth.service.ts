@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import * as jwtEncode from 'jwt-encode';
-import { Observable, Subject } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 
@@ -9,6 +9,7 @@ import * as fromCore from 'app/core';
 import { SetOnLoginAction } from 'app/core/core.actions';
 import { environment } from 'environments/environment';
 import { UserModel } from 'app/shared/models/user.model';
+import jwt_decode from 'jwt-decode';
 
 @Injectable()
 export class AuthService {
@@ -48,8 +49,11 @@ export class AuthService {
     this.setToken(null);
   }
 
-  isAuthenticated(): boolean {
-    return !!this.token;
+  isAuthenticated(): Observable<boolean> {
+    this.checkExpireDate();
+
+    // return !!this.token;
+    return of(!!this.token);
   }
 
   private handleError(error: HttpErrorResponse): void {
@@ -59,6 +63,13 @@ export class AuthService {
 
   public setData(user: UserModel): void {
     this.store.dispatch(new SetOnLoginAction(user));
+  }
+
+  public getInforFormToken(): Observable<UserModel> {
+    const userInfo = jwt_decode(this.token)[0];
+    delete userInfo.id;
+
+    return of(userInfo);
   }
 
   private setToken(response: any | null): any {
@@ -72,4 +83,7 @@ export class AuthService {
       localStorage.clear();
     }
   }
+
+
+
 }

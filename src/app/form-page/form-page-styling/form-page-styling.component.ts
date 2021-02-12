@@ -1,5 +1,5 @@
 import { Store } from '@ngrx/store';
-import { takeUntil } from 'rxjs/operators';
+import { filter, takeUntil } from 'rxjs/operators';
 import { Observable, Subject } from 'rxjs';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Component, OnDestroy, OnInit } from '@angular/core';
@@ -22,8 +22,8 @@ export class FormPageStylingComponent implements OnInit, OnDestroy {
 
   public form = new FormGroup({});
   public defaultFields: FormElementModel[];
-  public panelOpenStyleList = false;
-  public panelOpenGeneralStyle = false;
+  public panelOpenStyleList: boolean;
+  public panelOpenGeneralStyle: boolean;
   public generalStyle$: Observable<any>;
 
   constructor(
@@ -31,24 +31,20 @@ export class FormPageStylingComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.fields$ = this.storeFields.select(getCurrentFields).pipe(takeUntil(this.ngUnsubscribe$));
-    this.storeFields.select(getStaticFields).pipe(takeUntil(this.ngUnsubscribe$)).subscribe(
-      res => {
-        if (res) {
-          this.defaultFields = [ ...res ];
-        }
-      }
-    );
+    this.fields$ = this.storeFields.select(getCurrentFields);
+    this.storeFields.select(getStaticFields).pipe(
+      filter(res => !!res),
+      takeUntil(this.ngUnsubscribe$)
+    ).subscribe(res => this.defaultFields = [ ...res ]);
 
-    this.generalStyle$ = this.storeFields.select(getGeneralStyle).pipe(takeUntil(this.ngUnsubscribe$));
-    this.generalStyle$.subscribe(
-      res => {
-        if (res) {
-          res.forEach((style) => {
-            this.form.addControl(style.name, new FormControl(style.value, []));
-          });
-        }
-      }
+    this.generalStyle$ = this.storeFields.select(getGeneralStyle).pipe(
+      filter(res => !!res),
+      takeUntil(this.ngUnsubscribe$));
+
+    this.generalStyle$.subscribe(res =>
+      res.forEach((style) => {
+          this.form.addControl(style.name, new FormControl(style.value, []));
+      })
     );
   }
 

@@ -1,6 +1,8 @@
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
+import { StyleItemModel } from 'app/shared/models/style-item.model';
+
 @Component({
   selector: 'app-input',
   templateUrl: './input.component.html',
@@ -15,11 +17,11 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 })
 
 export class InputComponent implements OnInit, ControlValueAccessor {
-  @Input() styleArray: any;
-  placeholder = '';
+
+  @Input() styleArray!: StyleItemModel[];
+  placeholder: string | [];
   styleExp = {};
-  label = '';
-  requiredState = false;
+  label: string | [];
 
   @Input()
   set value(value: any) {
@@ -42,10 +44,18 @@ export class InputComponent implements OnInit, ControlValueAccessor {
 
   ngOnInit(): void {
     if (this.styleArray) {
-      this.styleArray.forEach(item => {
-        (item.name === 'placeholder') ? this.placeholder = item.value :
-          (item.name === 'required') ? this.requiredState = item.value :
-            (item.name === 'label') ? this.label = item.value : this.styleExp[item.name] = `${item.value}${item.measurement}`;
+      this.styleArray.forEach(({ name, value, measurement }) => {
+        switch (name) {
+          case 'placeholder' :
+            this.placeholder = value;
+            break;
+          case 'label' :
+            this.label = value;
+            break;
+          default:
+            this.styleExp[name] = `${value}${measurement}`;
+            break;
+        }
       });
     }
   }

@@ -34,8 +34,8 @@ export class TextareaComponent implements OnInit, ControlValueAccessor {
 
   ngOnInit(): void {
     if (this.styleArray) {
-      this.styleArray.forEach(item => {
-        item.name === 'placeholder' ? this.placeholder = item.value : this.styleExp[item.name] = `${item.value}${item.measurement}`;
+      this.styleArray.forEach(({ name, value, measurement }) => {
+        name === 'placeholder' ? this.placeholder = value : this.styleExp[name] = `${value}${measurement}`;
       });
     }
   }

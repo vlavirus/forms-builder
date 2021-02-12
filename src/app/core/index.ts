@@ -14,6 +14,7 @@ export const reducers = {
 };
 
 export const getFieldsState = (state: State) => state.fields;
+export const getCoreState = (state: State) => state.core;
 
 export const getStaticFields = createSelector(
   getFieldsState,
@@ -28,4 +29,9 @@ export const getCurrentFields = createSelector(
 export const getGeneralStyle = createSelector(
   getFieldsState,
   fromFields.getGeneralStyle
+);
+
+export const getAuthenticated = createSelector(
+  getCoreState,
+  fromCore.getAuthenticated
 );

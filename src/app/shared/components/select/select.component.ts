@@ -1,5 +1,6 @@
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { StyleItemModel } from '../../models/style-item.model';
 
 @Component({
   selector: 'app-select',
@@ -17,10 +18,10 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 export class SelectComponent implements OnInit, ControlValueAccessor {
 
-  @Input() styleArray: any;
+  @Input() styleArray!: StyleItemModel[];
   styleExp = {};
-  nameButton = '';
-  dropList;
+  nameButton: string | [] = '';
+  dropList: string | [];
 
   @Input()
   set value(value: any) {
@@ -43,9 +44,9 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
 
   ngOnInit(): void {
     if (this.styleArray) {
-      this.styleArray.forEach(item => {
-        (item.name === 'options') ? this.dropList = item.value :
-        item.name === 'name' ? this.nameButton = item.value : this.styleExp[item.name] = `${item.value}${item.measurement}`;
+      this.styleArray.forEach(({name, value, measurement}) => {
+        (name === 'options') ? this.dropList = value :
+          (name === 'name') ? this.nameButton = value : this.styleExp[name] = `${value}${measurement}`;
       });
     }
   }

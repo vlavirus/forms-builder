@@ -36,18 +36,16 @@ export class FormPageStylingItemComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.storeFields.dispatch(new AddStyleToField({id: this.currentItem.id, styles: this.form.value}));
+    this.storeFields.dispatch(new AddStyleToField({ id: this.currentItem.id, styles: this.form.value }));
     this.form.reset();
   }
 
   public findStyle(styleName: string, styleContainer: StyleItemModel[]): StyleItemModel {
-    return styleContainer.find((style) => {
-      return style.name === styleName ;
-    });
+    return styleContainer.find((style) => style.name === styleName );
   }
 
   public addOption(): void {
-    this.storeFields.dispatch(new AddNewOption({id: this.currentItem.id, option: this.formOption.value}));
+    this.storeFields.dispatch(new AddNewOption({ id: this.currentItem.id, option: this.formOption.value }));
     this.panelOpenState = true;
   }
 

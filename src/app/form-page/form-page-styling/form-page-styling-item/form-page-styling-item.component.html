@@ -1,30 +1,29 @@
 <div [formGroup]="form">
-  <mat-expansion-panel (opened)="panelOpenState = true"
-                       (closed)="panelOpenState = false">
+  <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
     <mat-expansion-panel-header>
       <mat-panel-title>
-        <h4>{{currentItem.type}}</h4>
+        <h4>{{ currentItem.type }}</h4>
       </mat-panel-title>
     </mat-expansion-panel-header>
     <div *ngFor="let field of currentItem.style">
       <container-element [ngSwitch]="field.name">
 
         <div *ngSwitchCase="'color'" class="item-style">
-          <label>{{field.name}}</label>
+          <label>{{ field.name }}</label>
           <div>
-            <input type="color" formControlName="{{field.name}}">
-            <span>{{field.measurement}}</span>
+            <input type="color" formControlName="{{ field.name }}">
+            <span>{{ field.measurement }}</span>
           </div>
         </div>
 
         <div *ngSwitchCase="'border-style'" class="item-style">
-          <label>{{field.name}}</label>
+          <label>{{ field.name }}</label>
           <div>
-            <select formControlName="{{field.name}}">
+            <select formControlName="{{ field.name }}">
               <ng-template ngFor let-style [ngForOf]="findStyle(field.name, defaultItem.style).value">
-                <option *ngIf="style === findStyle(field.name, currentItem.style).value; else unselectedOption" selected [value]="style">{{style}}</option>
+                <option *ngIf="style === findStyle(field.name, currentItem.style).value; else unselectedOption" selected [value]="style">{{ style }}</option>
                 <ng-template #unselectedOption>
-                  <option [value]="style">{{style}}</option>
+                  <option [value]="style">{{ style }}</option>
                 </ng-template>
               </ng-template>
             </select>
@@ -32,13 +31,13 @@
         </div>
 
         <div *ngSwitchCase="'font-weight'" class="item-style">
-          <label>{{field.name}}</label>
+          <label>{{ field.name }}</label>
           <div>
-            <select formControlName="{{field.name}}">
+            <select formControlName="{{ field.name }}">
               <ng-template ngFor let-style [ngForOf]="findStyle(field.name, defaultItem.style).value">
-                <option *ngIf="style === findStyle(field.name, currentItem.style).value; else unselectedOption" selected [value]="style">{{style}}</option>
+                <option *ngIf="style === findStyle(field.name, currentItem.style).value; else unselectedOption" selected [value]="style">{{ style }}</option>
                 <ng-template #unselectedOption>
-                  <option [value]="style">{{style}}</option>
+                  <option [value]="style">{{ style }}</option>
                 </ng-template>
               </ng-template>
             </select>
@@ -46,13 +45,13 @@
         </div>
 
         <div *ngSwitchCase="'required'" class="item-style">
-          <label>{{field.name}}</label>
+          <label>{{ field.name }}</label>
           <div>
-            <select formControlName="{{field.name}}">
+            <select formControlName="{{ field.name }}">
               <ng-template ngFor let-style [ngForOf]="findStyle(field.name, defaultItem.style).value">
-                <option *ngIf="style === findStyle(field.name, currentItem.style).value; else unselectedOption" selected [value]="style">{{style}}</option>
+                <option *ngIf="style === findStyle(field.name, currentItem.style).value; else unselectedOption" selected [value]="style">{{ style }}</option>
                 <ng-template #unselectedOption>
-                  <option [value]="style">{{style}}</option>
+                  <option [value]="style">{{ style }}</option>
                 </ng-template>
               </ng-template>
             </select>
@@ -60,13 +59,13 @@
         </div>
 
         <div *ngSwitchCase="'options'" class="item-style">
-          <label>{{field.name}}</label>
+          <label>{{ field.name }}</label>
           <div>
-            <select formControlName="{{field.name}}">
+            <select formControlName="{{ field.name }}">
               <ng-template ngFor let-style [ngForOf]="findStyle(field.name, currentItem.style).value">
-                <option *ngIf="style === findStyle(field.name, currentItem.style).value; else unselectedOption" selected [value]="style">{{style}}</option>
+                <option *ngIf="style === findStyle(field.name, currentItem.style).value; else unselectedOption" selected [value]="style">{{ style }}</option>
                 <ng-template #unselectedOption>
-                  <option [value]="style">{{style.name}}</option>
+                  <option [value]="style">{{ style.name }}</option>
                 </ng-template>
               </ng-template>
             </select>
@@ -79,10 +78,10 @@
         </div>
 
         <div *ngSwitchDefault class="item-style">
-          <label>{{field.name}}</label>
+          <label>{{ field.name }}</label>
           <div>
-            <input type="text" formControlName="{{field.name}}"  [placeholder]="field.name">
-            <span>{{field.measurement}}</span>
+            <input type="text" formControlName="{{ field.name }}" [placeholder]="field.name">
+            <span>{{ field.measurement }}</span>
           </div>
         </div>
 

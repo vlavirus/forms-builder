@@ -23,8 +23,8 @@ export class CheckboxComponent implements OnInit, ControlValueAccessor {
 
   ngOnInit(): void {
     if (this.styleArray) {
-      this.styleArray.forEach(item => {
-        item.name === 'name' ? this.nameCheckbox = item.value : this.styleExp[item.name] = `${item.value}${item.measurement}`;
+      this.styleArray.forEach(({ name, value, measurement }) => {
+        name === 'name' ? this.nameCheckbox = value : this.styleExp[name] = `${value}${measurement}`;
       });
     }
   }

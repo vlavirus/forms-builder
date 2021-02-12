@@ -15,18 +15,18 @@ export class FieldsEffect {
   ) {}
 
   getStaticFields$ = createEffect((): Observable<any> => {
-    return  this.actions$.pipe(
+    return this.actions$.pipe(
       ofType(fieldsActions.GET_STATIC_FIELDS),
       exhaustMap(() => {
-          return this.fieldsService.getStaticData().pipe(
-            first(),
-            map(res => new fieldsActions.GetStaticFieldsSuccess(res)));
+        return this.fieldsService.getStaticData().pipe(
+          first(),
+          map(res => new fieldsActions.GetStaticFieldsSuccess(res)));
       })
     );
   });
 
   getGeneralStyle$ = createEffect((): Observable<any> => {
-    return  this.actions$.pipe(
+    return this.actions$.pipe(
       ofType(fieldsActions.GET_GENERAL_STYLE),
       exhaustMap(() => {
         return this.fieldsService.getGeneralStyle().pipe(

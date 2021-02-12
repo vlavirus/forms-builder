@@ -13,9 +13,13 @@ export const INIT_STATE: State = {
 
 export function reducer(state: State = INIT_STATE, action: coreActions.Actions) {
   switch (action.type) {
-    case coreActions.ON_LOGIN:
+    case coreActions.ON_LOGIN_SUCCESS:
       return { isAuthenticated: true, userInfo: action.payload };
+    case coreActions.ON_LOGIN_FAILURE:
+      return { isAuthenticated: false };
     default:
       return state;
   }
 }
+
+export const getAuthenticated = (state: State): boolean => state.isAuthenticated;
