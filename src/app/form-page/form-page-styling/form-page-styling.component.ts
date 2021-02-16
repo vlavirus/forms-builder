@@ -5,10 +5,10 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import * as fromFields from 'app/core';
-import { getCurrentFields, getGeneralStyle, getStaticFields } from 'app/core';
-import { FormElementModel } from 'app/shared/models/form-element.model';
 import { AddGeneralStyle } from 'app/core/fields/fields.action';
-import { StyleItemModel } from '../../shared/models/style-item.model';
+import { StyleItemModel } from 'app/shared/models/style-item.model';
+import { FormElementModel } from 'app/shared/models/form-element.model';
+import { getCurrentFields, getGeneralStyle, getStaticFields } from 'app/core';
 
 @Component({
   selector: 'app-form-page-styling',

@@ -66,7 +66,7 @@ describe('Checkbox component', () => {
   });
 
 
-  it('should Checkbox onInit', () => {
+  it('should Checkbox init', () => {
     component.styleArray = checkBoxStyle;
     component.ngOnInit();
 
@@ -74,7 +74,7 @@ describe('Checkbox component', () => {
   });
 
 
-  it('should toggle checkbox template', () => {
+  it('should toggle checkbox on template', () => {
     const input = fixture.debugElement.query(By.css('input')).nativeElement;
     expect(input.checked).toBeFalsy();
     input.click();

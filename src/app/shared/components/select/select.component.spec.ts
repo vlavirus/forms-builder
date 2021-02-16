@@ -36,7 +36,7 @@ describe('Select component', () => {
     expect(component).toBeTruthy();
   });
 
-  it('check input style values', () => {
+  it('should add input style values', () => {
     component.ngOnInit();
     component.styleArray = [];
 

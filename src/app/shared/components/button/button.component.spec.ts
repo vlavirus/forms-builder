@@ -26,14 +26,14 @@ describe('Button component', () => {
     comp = new ButtonComponent();
   });
 
-  it('check Button values', () => {
+  it('should add Button style', () => {
     comp.ngOnInit();
     comp.styleArray = [];
 
     expect(comp.styleArray).toEqual([]);
   });
 
-  it('check Button onInit', () => {
+  it('should init button', () => {
     comp.styleArray = buttonStyle;
     comp.ngOnInit();
 
