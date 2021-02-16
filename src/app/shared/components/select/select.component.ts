@@ -45,7 +45,6 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
 
   ngOnInit(): void {
     if (this.styleArray) {
-      // debugger
       this.styleArray.forEach(({name, value, measurement}) => {
         (name === 'options') ? this.dropList = value :
           (name === 'name') ? this.nameButton = value : this.styleExp[name] = `${value}${measurement}`;

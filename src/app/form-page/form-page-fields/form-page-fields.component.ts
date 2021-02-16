@@ -1,12 +1,12 @@
-import { Store } from '@ngrx/store';
 import { Subject } from 'rxjs';
+import { Store } from '@ngrx/store';
 import { takeUntil } from 'rxjs/operators';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
-import { FormElementModel } from 'app/shared/models/form-element.model';
 import * as fromFields from 'app/core';
 import { RemoveFieldAction } from 'app/core/fields/fields.action';
+import { FormElementModel } from 'app/shared/models/form-element.model';
 
 @Component({
   selector: 'app-form-page-fields',

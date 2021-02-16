@@ -1,10 +1,10 @@
 import { Store } from '@ngrx/store';
 import { FormControl, FormGroup } from '@angular/forms';
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import * as fromFields from 'app/core';
-import { AddNewOption, AddStyleToField } from 'app/core/fields/fields.action';
 import { StyleItemModel } from 'app/shared/models/style-item.model';
+import { AddNewOption, AddStyleToField } from 'app/core/fields/fields.action';
 
 @Component({
   selector: 'app-form-page-styling-item',
@@ -24,7 +24,6 @@ export class FormPageStylingItemComponent implements OnInit {
     optionControl: new FormControl('', [])
   });
 
-
   constructor(
     private storeFields: Store<fromFields.State>
   ) { }
@@ -41,7 +40,7 @@ export class FormPageStylingItemComponent implements OnInit {
   }
 
   public findStyle(styleName: string, styleContainer: StyleItemModel[]): StyleItemModel {
-      return styleContainer.find((style) => style.name === styleName );
+    return styleContainer.find((style) => style.name === styleName );
   }
 
   public addOption(): void {

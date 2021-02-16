@@ -37,14 +37,14 @@ describe('Textarea component', () => {
     expect(component).toBeTruthy();
   });
 
-  it('check textarea style values', () => {
+  it('should return empty array', () => {
     component.ngOnInit();
     component.styleArray = [];
 
     expect(component.styleArray).toEqual([]);
   });
 
-  it('should add value to template', () => {
+  it('should add value to textarea', () => {
     const textarea = fixture.debugElement.query(By.css('textarea'));
     const el = textarea.nativeElement;
 
