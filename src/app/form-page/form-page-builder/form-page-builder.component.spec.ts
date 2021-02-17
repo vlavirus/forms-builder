@@ -27,7 +27,7 @@ describe('FormPageBuilder', () => {
         name: 'height', value: '40', measurement: 'px'
       },
       {
-        name: 'required', value: true, measurement: ''
+        name: 'required', value: 'true', measurement: ''
       },
       {
         name: 'border-style', value: [ 'none' , 'hidden' , 'dotted' , 'dashed' , 'solid' , 'double' , 'groove' , 'ridge' , 'inset' , 'outset' ], measurement: ''
@@ -107,9 +107,15 @@ describe('FormPageBuilder', () => {
 
   it('should add validator to exist FormControl', () => {
     component.updateControls(defaultState);
+    component.setValidators(defaultState);
+    expect(component.form.controls['controlName']._rawValidators.length).toEqual(1);
+  });
+
+  it('should mutate show', () => {
     component.updateControls(newDefaultState);
-    expect(component.form.contains('controlName')).toBeFalse();
-    expect(component.form.contains('newControlName')).toBeTruthy();
+    component.setValidators(newDefaultState);
+    component.onShowClick();
+    expect(component.show).toBeFalse();
   });
 
   afterEach(() => {

@@ -42,7 +42,7 @@ describe('FormPageFields', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ FormsModule, ReactiveFormsModule, StoreModule.forRoot(reducers.fields), DragDropModule],
+      imports: [ FormsModule, ReactiveFormsModule, StoreModule.forRoot(reducers), DragDropModule],
       declarations: [ FormPageFieldsComponent ],
       providers: [ { provide: Store }]
     }).compileComponents();
@@ -72,6 +72,19 @@ describe('FormPageFields', () => {
   it('should stopped ngUnsubscribe$ after destroyed', () => {
     component.ngOnDestroy();
     expect(component.ngUnsubscribe$.isStopped).toBeTruthy();
+  });
+
+  it('should add data to items', () => {
+    component.ngOnInit();
+    expect(component.items.length).toEqual(1);
+    expect(component.staticItems.length).toEqual(1);
+  });
+
+  it('should generate new id to item', () => {
+    component.ngOnInit();
+    const prevId = component.items[0].id;
+    component.rebuildStaticFields();
+    expect(component.items[0].id).not.toEqual(prevId);
   });
 
   afterEach(() => {

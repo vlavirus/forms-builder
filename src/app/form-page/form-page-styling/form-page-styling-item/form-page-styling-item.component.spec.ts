@@ -105,7 +105,6 @@ describe('FormPageStylingItem', () => {
     const objectForSearch = {
       name: 'color', value: '#1D9F90', measurement: ''
     };
-    console.log(component.findStyle('color', testItem.style));
     expect(component.findStyle('color', testItem.style)).toEqual(objectForSearch);
   });
 

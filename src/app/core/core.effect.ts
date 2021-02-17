@@ -1,6 +1,6 @@
+import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { Observable } from 'rxjs';
 import { filter, first, map, switchMap } from 'rxjs/operators';
 
 import * as coreActions from './core.actions';

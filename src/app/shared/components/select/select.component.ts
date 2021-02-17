@@ -21,7 +21,6 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
 
   @Input() styleArray!: StyleItemModel[];
   styleExp = {};
-  nameButton: string | [] = '';
   dropList: string | [];
 
   @Input()
@@ -46,8 +45,7 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
   ngOnInit(): void {
     if (this.styleArray) {
       this.styleArray.forEach(({name, value, measurement}) => {
-        (name === 'options') ? this.dropList = value :
-          (name === 'name') ? this.nameButton = value : this.styleExp[name] = `${value}${measurement}`;
+        (name === 'options') ? this.dropList = value : this.styleExp[name] = `${value}${measurement}`;
       });
     }
   }

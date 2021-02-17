@@ -2,13 +2,13 @@ import { Store } from '@ngrx/store';
 import { takeUntil } from 'rxjs/operators';
 import { Observable, Subject } from 'rxjs';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 
-import { AuthService } from 'app/shared/services/auth.service';
 import { getAuthenticated, State } from '../core';
 import { SetOnLoginAction } from 'app/core/core.actions';
+import { AuthService } from 'app/shared/services/auth.service';
 
 
 @Component({

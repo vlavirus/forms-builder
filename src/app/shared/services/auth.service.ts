@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import * as jwtEncode from 'jwt-encode';
-import { Observable, of, Subject } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 import jwt_decode from 'jwt-decode';
+import * as jwtEncode from 'jwt-encode';
+import { Injectable } from '@angular/core';
+import { Observable, of, Subject } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 import * as fromCore from 'app/core';
 import { SetOnLoginAction } from 'app/core/core.actions';
