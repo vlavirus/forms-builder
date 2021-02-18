@@ -15,7 +15,6 @@ import { getCurrentFields, getGeneralStyle, getStaticFields } from 'app/core';
   templateUrl: './form-page-styling.component.html',
   styleUrls: ['./form-page-styling.component.scss']
 })
-
 export class FormPageStylingComponent implements OnInit, OnDestroy {
 
   public fields$: Observable<any>;
@@ -40,11 +39,14 @@ export class FormPageStylingComponent implements OnInit, OnDestroy {
 
     this.generalStyle$ = this.storeFields.select(getGeneralStyle).pipe(
       filter(res => !!res),
-      takeUntil(this.ngUnsubscribe$));
+    );
 
-    this.generalStyle$.subscribe(res =>
+    this.generalStyle$.pipe(
+      takeUntil(this.ngUnsubscribe$)
+    )
+    .subscribe(res =>
       res.forEach((style) => {
-          this.form.addControl(style.name, new FormControl(style.value, []));
+        this.form.addControl(style.name, new FormControl(style.value, []));
       })
     );
   }

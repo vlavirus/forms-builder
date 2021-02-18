@@ -7,8 +7,8 @@ import { catchError, tap } from 'rxjs/operators';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 import * as fromCore from 'app/core';
-import { SetOnLoginAction } from 'app/core/core.actions';
 import { environment } from 'environments/environment';
+import { SetOnLoginAction } from 'app/core/core.actions';
 import { UserModel } from 'app/shared/models/user.model';
 
 @Injectable()
@@ -52,7 +52,6 @@ export class AuthService {
   isAuthenticated(): Observable<boolean> {
     this.checkExpireDate();
 
-    // return !!this.token;
     return of(!!this.token);
   }
 
@@ -83,7 +82,4 @@ export class AuthService {
       localStorage.clear();
     }
   }
-
-
-
 }

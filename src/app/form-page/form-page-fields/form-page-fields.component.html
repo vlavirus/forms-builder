@@ -10,10 +10,14 @@
       cdkDropListSortingDisabled
       (cdkDropListDropped)="drop($event)">
 
-      <div class="example-box d__flex d__flex--justify-between d__flex--direction-row d__flex--items-center" *ngFor="let item of items"  (cdkDragReleased)="rebuildStaticFields()" cdkDrag>
+      <div class="example-box d__flex d__flex--justify-between d__flex--direction-row d__flex--items-center" *ngFor="let item of items" (cdkDragReleased)="rebuildStaticFields()" cdkDrag>
         <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
         <container-element [ngSwitch]="item.type">
-          <app-input *ngSwitchCase="'input'" [styleArray]="item.style"></app-input>
+          <app-input
+            *ngSwitchCase="'input'"
+            [styleArray]="item.style"
+            [label]="findCurrentStyleValue('label', item.style)"
+            [placeholder]="findCurrentStyleValue('placeholder', item.style)"></app-input>
           <app-textarea *ngSwitchCase="'textarea'" [styleArray]="item.style"></app-textarea>
           <app-button *ngSwitchCase="'button'" [styleArray]="item.style"></app-button>
           <app-checkbox *ngSwitchCase="'checkbox'" [styleArray]="item.style"></app-checkbox>

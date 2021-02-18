@@ -16,14 +16,13 @@ import { StyleItemModel } from 'app/shared/models/style-item.model';
     }
   ]
 })
-
 export class InputComponent implements OnInit, ControlValueAccessor {
 
+  @Input() label!: string;
+  @Input() placeholder!: string;
   @Input() styleArray!: StyleItemModel[];
 
-  placeholder: string | [];
   styleExp = {};
-  label: string | [];
 
   @Input()
   set value(value: any) {
@@ -45,21 +44,8 @@ export class InputComponent implements OnInit, ControlValueAccessor {
   onTouched = () => {};
 
   ngOnInit(): void {
-
     if (this.styleArray) {
-      this.styleArray.forEach(({ name, value, measurement }) => {
-        switch (name) {
-          case 'placeholder' :
-            this.placeholder = value;
-            break;
-          case 'label' :
-            this.label = value;
-            break;
-          default:
-            this.styleExp[name] = `${value}${measurement}`;
-            break;
-        }
-      });
+      this.styleArray.forEach(({name, value, measurement}) => this.styleExp[name] = `${value}${measurement}`);
     }
   }
 

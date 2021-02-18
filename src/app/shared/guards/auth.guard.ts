@@ -1,13 +1,12 @@
 import { Store } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
 import { Injectable } from '@angular/core';
+import { catchError, first, map, shareReplay, switchMap, tap } from 'rxjs/operators';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 
 import * as fromCore from 'app/core/';
 import { AuthService } from '../services/auth.service';
 import { SetOnLoginAction } from 'app/core/core.actions';
-import { catchError, first, map, shareReplay, switchMap, tap } from 'rxjs/operators';
-
 
 @Injectable()
 export class AuthGuard implements CanActivate {

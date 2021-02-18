@@ -11,7 +11,6 @@ import { AddNewOption, AddStyleToField } from 'app/core/fields/fields.action';
   templateUrl: './form-page-styling-item.component.html',
   styleUrls: ['./form-page-styling-item.component.scss'],
 })
-
 export class FormPageStylingItemComponent implements OnInit {
 
   @Input() currentItem;

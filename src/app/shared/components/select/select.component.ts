@@ -16,7 +16,6 @@ import { StyleItemModel } from 'app/shared/models/style-item.model';
     }
   ]
 })
-
 export class SelectComponent implements OnInit, ControlValueAccessor {
 
   @Input() styleArray!: StyleItemModel[];

@@ -14,7 +14,6 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     }
   ]
 })
-
 export class TextareaComponent implements OnInit, ControlValueAccessor {
 
   @Input() styleArray: any;

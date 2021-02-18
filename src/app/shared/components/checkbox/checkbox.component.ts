@@ -14,7 +14,6 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     }
   ]
 })
-
 export class CheckboxComponent implements OnInit, ControlValueAccessor {
 
   @Input() styleArray: any;

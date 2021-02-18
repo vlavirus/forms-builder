@@ -6,6 +6,7 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 import * as fromFields from 'app/core';
 import { RemoveFieldAction } from 'app/core/fields/fields.action';
+import { StyleItemModel } from 'app/shared/models/style-item.model';
 import { FormElementModel } from 'app/shared/models/form-element.model';
 
 @Component({
@@ -13,7 +14,6 @@ import { FormElementModel } from 'app/shared/models/form-element.model';
   templateUrl: './form-page-fields.component.html',
   styleUrls: ['./form-page-fields.component.scss'],
 })
-
 export class FormPageFieldsComponent implements OnInit, OnDestroy {
 
   items: FormElementModel[];
@@ -46,6 +46,10 @@ export class FormPageFieldsComponent implements OnInit, OnDestroy {
 
   rebuildStaticFields(): void {
     this.items = [...this.generateFieldId(this.staticItems)];
+  }
+
+  findCurrentStyleValue(styleName: string, styleArray: StyleItemModel[]): string {
+    return <string> styleArray.find(style => style.name === styleName).value;
   }
 
   private generateFieldId(fields: FormElementModel[]): FormElementModel[] {

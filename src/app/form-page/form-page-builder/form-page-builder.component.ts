@@ -2,12 +2,13 @@ import { Subject } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { takeUntil } from 'rxjs/operators';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 import * as fromFields from 'app/core';
 import { getCurrentFields, getGeneralStyle } from 'app/core';
 import { AddFieldAction } from 'app/core/fields/fields.action';
+import { StyleItemModel } from 'app/shared/models/style-item.model';
 import { FormElementModel } from 'app/shared/models/form-element.model';
 
 @Component({
@@ -15,7 +16,6 @@ import { FormElementModel } from 'app/shared/models/form-element.model';
   templateUrl: './form-page-builder.component.html',
   styleUrls: ['./form-page-builder.component.scss']
 })
-
 export class FormPageBuilderComponent implements OnInit, OnDestroy {
 
   public ngUnsubscribe$ = new Subject<void>();
@@ -84,6 +84,10 @@ export class FormPageBuilderComponent implements OnInit, OnDestroy {
     for (const controlId in this.form.controls) {
       fields.find(({id}) => id === controlId) ? null :  this.form.removeControl(controlId);
     }
+  }
+
+  findCurrentStyleValue(styleName: string, styleArray: StyleItemModel[]): string {
+    return <string> styleArray.find(style => style.name === styleName).value;
   }
 
   onShowClick(): void {

@@ -5,18 +5,16 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-
-import { getAuthenticated, State } from '../core';
+import { EMessages } from 'app/shared/enums';
+import { getAuthenticated, State } from 'app/core';
 import { SetOnLoginAction } from 'app/core/core.actions';
 import { AuthService } from 'app/shared/services/auth.service';
-
 
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.scss']
 })
-
 export class AuthComponent implements OnInit, OnDestroy {
 
   public ngUnsubscribe$ = new Subject<void>();
@@ -39,7 +37,7 @@ export class AuthComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.route.queryParams.subscribe((params: Params) => {
       if (params.loginAgain) {
-        this.message = 'Please fill your login and pass';
+        this.message = EMessages.fillCredentials;
       }
     });
 
@@ -53,8 +51,7 @@ export class AuthComponent implements OnInit, OnDestroy {
 
     this.store.dispatch(new SetOnLoginAction(this.loginForm.value));
     this.authenticated$.subscribe(res => {
-      (res === true) ? this.loginSuccess() :
-        (res === false) ? this.showAlert() : null;
+      res ? this.loginSuccess() : this.showAlert();
     });
   }
 
@@ -66,7 +63,7 @@ export class AuthComponent implements OnInit, OnDestroy {
   }
 
   private showAlert(): void  {
-    this.message = 'Wrong login or pass';
+    this.message = EMessages.wrongCredentials;
   }
 
   ngOnDestroy(): void {

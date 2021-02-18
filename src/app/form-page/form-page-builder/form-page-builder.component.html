@@ -7,14 +7,17 @@
       [cdkDropListConnectedTo]="['list-two']"
       [cdkDropListData]="formData"
       class="example-list d__block"
-      (cdkDropListDropped)="drop($event)"
+      (cdkDropListDropped)="drop($event)">
 
-    >
       <small *ngIf="show" class="fill-gaps">Fill all gaps</small>
       <div class="example-box d__flex d__flex--justify-between d__flex--direction-row d__flex--items-center" [ngStyle]="styleExp" *ngFor="let formItem of formData" cdkDrag >
         <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
         <container-element [ngSwitch]="formItem.type">
-          <app-input *ngSwitchCase="'input'" [formControlName]="formItem.id" [styleArray]="formItem.style"></app-input>
+          <app-input
+            *ngSwitchCase="'input'"
+            [styleArray]="formItem.style"
+            [label]="findCurrentStyleValue('label', formItem.style)"
+            [placeholder]="findCurrentStyleValue('placeholder', formItem.style)"></app-input>
           <app-textarea *ngSwitchCase="'textarea'" [formControlName]="formItem.id" [styleArray]="formItem.style"></app-textarea>
           <app-button *ngSwitchCase="'button'" [styleArray]="formItem.style" (click)="onShowClick()"></app-button>
           <app-select *ngSwitchCase="'select'" [formControlName]="formItem.id" [styleArray]="formItem.style"></app-select>

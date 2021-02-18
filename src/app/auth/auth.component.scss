@@ -1,17 +1,15 @@
-.wrapper {
+.example-container {
+  padding-top: 5px;
+}
+
+:host {
+  display: block;
   position: absolute;
   max-width: 200px;
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-}
-
-.example-container {
-  padding-top: 5px;
-}
-
-:host {
   ::ng-deep {
     .mat-form-field-appearance-fill {
       width: 200px;

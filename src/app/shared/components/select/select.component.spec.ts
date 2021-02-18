@@ -1,8 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ControlContainer, FormGroupDirective, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ControlContainer, FormControl, FormGroupDirective, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { SelectComponent } from './select.component';
 import { By } from '@angular/platform-browser';
+import { DebugElement } from '@angular/core';
 
 describe('Select component', () => {
   let component;
@@ -10,6 +11,7 @@ describe('Select component', () => {
   let element: HTMLElement;
 
   const formGroupDirective = new FormGroupDirective([], []);
+  const selectController = new FormControl('testValue', []);
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -27,7 +29,7 @@ describe('Select component', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(SelectComponent);
     component = fixture.componentInstance;
-    component.formControlName = 'test';
+    component.formControlName = 'selectController';
     fixture.detectChanges();
 
     element = fixture.debugElement.nativeElement;
@@ -88,5 +90,20 @@ describe('Select component', () => {
 
     expect(el).toBeTruthy();
   });
+
+  it('should get value from the properties', () => {
+    component.ngOnInit();
+    component._value = 'test';
+    expect(component.value).toBeTruthy('test');
+  });
+
+  // it('should get ngModel', ( async () => {
+  //   const customComponent = fixture.debugElement.query(By.directive(SelectComponent));
+  //
+  //   fixture.whenStable().then(() => {
+  //     fixture.detectChanges();
+  //     expect(customComponent.componentInstance.value).toEqual('');
+  //   });
+  // }));
 
 });
