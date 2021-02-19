@@ -17,7 +17,6 @@ export class SetOnLoginActionSuccess implements Action {
 
 export class SetOnLoginActionFailure implements Action {
   readonly type = ON_LOGIN_FAILURE;
-  constructor(public payload: any) {}
 }
 
 export type Actions =

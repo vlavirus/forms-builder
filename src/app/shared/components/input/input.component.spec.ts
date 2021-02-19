@@ -54,13 +54,16 @@ describe('Input component', () => {
 
   it('should add style to component properties', () => {
     const styleObject = {
-      'border-style': 'none,hidden,dotted,dashed,solid,double,groove,ridge,inset,outset',
-      color: '#1D9F90',
-      'font-size': '16px',
+      placeholder: 'testPlaceholder',
+      label: 'testLabel',
+      width: '630px',
       height: '40px',
       required: 'true,false',
-      width: '630px',
+      'border-style': 'none,hidden,dotted,dashed,solid,double,groove,ridge,inset,outset',
+      'font-size': '16px',
+      color: '#1D9F90'
     };
+
     component.styleArray = [
       {
         name: 'placeholder', value: 'testPlaceholder', measurement: ''
@@ -87,6 +90,8 @@ describe('Input component', () => {
         name: 'color', value: '#1D9F90', measurement: ''
       }
     ];
+    component.label = 'testLabel';
+    component.placeholder = 'testPlaceholder';
     component.ngOnInit();
 
     expect(component.styleExp).toEqual(styleObject);

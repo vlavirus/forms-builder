@@ -22,10 +22,9 @@ export class CoreEffect {
           filter(res => !!res),
           first(),
           map((res) => res[0] ? new coreActions.SetOnLoginActionSuccess(res[0]) :
-            new coreActions.SetOnLoginActionFailure(res[0])
+            new coreActions.SetOnLoginActionFailure()
           ));
       })
     );
   });
-
 }

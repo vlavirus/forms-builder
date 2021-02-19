@@ -16,7 +16,7 @@ export function reducer(state: State = INIT_STATE, action: coreActions.Actions) 
     case coreActions.ON_LOGIN_SUCCESS:
       return { isAuthenticated: true, userInfo: action.payload };
     case coreActions.ON_LOGIN_FAILURE:
-      return { isAuthenticated: false };
+      return { ...state, isAuthenticated: false };
     default:
       return state;
   }
