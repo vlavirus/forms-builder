@@ -43,7 +43,7 @@ import { UserModule } from './user/user.module';
     ReactiveComponentModule,
   ],
   providers: [
-    { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } } , AuthService, AuthGuard ],
+    { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } }, AuthService, AuthGuard ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

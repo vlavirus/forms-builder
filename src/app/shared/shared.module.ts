@@ -26,7 +26,8 @@ import { TextareaComponent } from './components/textarea/textarea.component';
     InputComponent,
     SelectComponent,
     TextareaComponent
-  ]
+  ],
+
 })
 
 export class SharedModule { }
