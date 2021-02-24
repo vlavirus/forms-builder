@@ -16,6 +16,7 @@
           <app-input
             *ngSwitchCase="'input'"
             [styleArray]="formItem.style"
+            [formControlName]="formItem.id"
             [label]="findCurrentStyleValue('label', formItem.style)"
             [placeholder]="findCurrentStyleValue('placeholder', formItem.style)"></app-input>
           <app-textarea *ngSwitchCase="'textarea'" [formControlName]="formItem.id" [styleArray]="formItem.style"></app-textarea>
