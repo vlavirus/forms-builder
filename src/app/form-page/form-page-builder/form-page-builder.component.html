@@ -11,7 +11,7 @@
 
       <small *ngIf="show" class="fill-gaps">Fill all gaps</small>
       <div class="example-box d__flex d__flex--justify-between d__flex--direction-row d__flex--items-center" [ngStyle]="styleExp" *ngFor="let formItem of formData" cdkDrag >
-        <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+<!--        <div class="example-custom-placeholder" *cdkDragPlaceholder></div>-->
         <container-element [ngSwitch]="formItem.type">
           <app-input
             *ngSwitchCase="'input'"
